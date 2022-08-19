@@ -23,6 +23,28 @@ yarn create react-app my-app --template typescript
 yarn add typescript @types/node @types/react @types/react-dom @types/jest
 ```
 
+### ESLint
+
+ESLintは標準の構成に含まれているため、新規インストールは不要。  
+`.eslintrc` は標準の構成に含まれておらず `package.json` 上に `eslintConfig` が存在している。設定を外部化する場合、 `npx eslint --init` を実するかファイルを別プロジェクトから複製するなど行して作成する必要がある。
+
+### prettier
+
+prettierは標準の構成に含まれていないので、使用する場合は関連モジュールをインストールする必要がある。
+
+```
+yarn add -D prettier eslint-config-prettier
+```
+
+prettierを実行するためのnpmスクリプトも追加する。
+
+```
+"scripts": {
+  ...
+  "format": "prettier --write . \"src/**/*.{js,jsx,ts,tsx}\""
+},
+```
+
 ## 参考リンク
 
 - [新しい React アプリを作る](https://ja.reactjs.org/docs/create-a-new-react-app.html)
