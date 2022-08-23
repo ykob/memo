@@ -77,9 +77,21 @@ module.exports = {
 @tailwind utilities;
 ```
 
+## Router
+
+以下コマンドを実行して、必要なモジュールをインストールする。
+
+```
+yarn add react-router-dom
+```
+
+`v5` から `v6` にアップグレードした際に使えなくなったAPIがある。  
+詳細は以下公式のmarkdownを参照。
+
+- [Upgrade to React Router v6](https://github.com/remix-run/react-router/blob/main/docs/upgrading/v5.md#upgrade-to-react-router-v6)
+
 ## 参考リンク
 
 - [新しい React アプリを作る](https://ja.reactjs.org/docs/create-a-new-react-app.html)
-- [Create React App](https://create-react-app.dev/)
+- [フック早わかり - React](https://ja.reactjs.org/docs/hooks-overview.html)- [Create React App](https://create-react-app.dev/)
 - [Install Tailwind CSS with Create React App](https://tailwindcss.com/docs/guides/create-react-app)
-- [フック早わかり - React](https://ja.reactjs.org/docs/hooks-overview.html)
