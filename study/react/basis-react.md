@@ -27,6 +27,23 @@ React 16.8 の正式版がリリースされたのは2019年2月4日。
 `useEffect` は非同期的に実行され、ブラウザによる画面更新をブロックしない。大部分において副作用は同期的に行われる必要がないためにそのようになっている。  
 副作用の処理を同期的に行いたい場合(レアケース)は、 `useLayoutEffect` という別のフックを利用する必要がある。
 
+### ESLintの警告
+
+`useEffect` の第一引数の関数内で使用している `state` を第ニ引数の配列に指定しないことで無限ループを回避できるが、そのような記述をするとESLintが警告を出すことがある。
+
+> React Hook useEffect has a missing dependency: 'count'. Either include it or remove the dependency array. You can also do a functional update 'setCount(c => ...)' if you only need 'count' in the 'setCount'
+> call.eslint(react-hooks/exhaustive-deps)
+
+`react-hooks/exhaustive-deps` の警告は `eslint-plugin-react-hooks` に依るもので Create React App の標準設定になっている。
+この設定を無視するような定義をeslintrcに上書きして定義すれば回避可能だが、影響範囲が `useEffect` 以外に及ぶ恐れもあるため、以下のコードのように一時的にルールを回避するような指定をしたほうが無難。
+
+```
+useEffect(() => {
+  setCount(count + 1)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [props.count])
+```
+
 ## `useMemo` と `useCallback`
 
 `useMemo` と `useCallback` はいずれも基本的にコンポーネントの再レンダリングを最適化するために用意されている。  
