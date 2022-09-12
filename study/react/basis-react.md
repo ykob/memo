@@ -104,6 +104,29 @@ const numArray = React.useMemo(() => {
 }, [num]);
 ```
 
+## コンポジション
+
+ネストされたJSXを使って、コンポーネントからコンポーネントへ任意の子要素を渡すことが出来る。これをコンポジションと呼ぶ。  
+Vue.jsにおける `slot` に近い。
+
+`props` には標準で `children` というキーが含まれていて、これによって任意の子要素を出力する。
+
+```
+function ComponentA(props) {
+  return (
+    <div>{ props.children }</div>
+  )
+}
+
+function ComponentB() {
+  return (
+    <ComponentA>
+      <div>It's props.children element.</div>
+    </ComponentA>
+  )
+}
+```
+
 ## 参考リンク
 
 - [フックの導入 - React](https://ja.reactjs.org/docs/hooks-intro.html)
