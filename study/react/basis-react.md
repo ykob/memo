@@ -127,7 +127,10 @@ function ComponentB() {
 }
 ```
 
+`children` 以外にも任意の要素を渡したい場合は、独自の `props` を定義してJSXを渡せばよい。
+
 ## 参考リンク
 
 - [フックの導入 - React](https://ja.reactjs.org/docs/hooks-intro.html)
 - [【React Hooks】useEffectのよくある間違い4選とそれらを回避する方法](https://tyotto-good.com/blog/avoid-useeffect-mistakes)
+- [コンポジション vs 継承 - React](https://ja.reactjs.org/docs/composition-vs-inheritance.html)
