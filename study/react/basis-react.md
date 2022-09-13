@@ -129,6 +129,17 @@ function ComponentB() {
 
 `children` 以外にも任意の要素を渡したい場合は、独自の `props` を定義してJSXを渡せばよい。
 
+## コンテクスト
+
+コンテクストは主にグローバルな状態の管理に利用される。Store や Global State と呼ばれるものと同等のもの。  
+React Hooksにおいては `useContext` という標準のフックが用意されている。
+
+コンテクストを使用する手順は以下のようになる。
+
+1. `React.createContext` を用いてコンテクストオブジェクトを作成する。
+2. `useContext` を用いてコンテクストオブジェクトを受け取り、そのコンテクストの現在値を取得する。  
+コンテクストの現在値は、ツリー内でこのフックを呼んだコンポーネントの直近にある `<MyContext.Provider>` の `value` の値によって決定される。
+
 ## 参考リンク
 
 - [フックの導入 - React](https://ja.reactjs.org/docs/hooks-intro.html)
