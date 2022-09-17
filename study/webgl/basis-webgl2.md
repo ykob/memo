@@ -41,15 +41,23 @@ const gl = canvas.getContext('webgl2');
 
 |API名|用途|
 |---|---|
+|`gl.bindBuffer(target, buffer)`|与えられた `WebGLBuffer` を `target` に結合する|
 |`gl.clear(mask)`|描画領域を指定した色でクリアする|
 |`gl.clearColor()`|描画領域のクリアカラーを設定する|
+|`gl.createBuffer()`|頂点や色といったデータを格納する `WebGLBuffer` を作成、初期化する|
 |`gl.viewport(x, y, width, height)`|描画領域のビューポートを指定する|
 
 ## 定数
 
 |定数名|用途|
 |---|---|
+|`gl.ARRAY_BUFFER`|頂点データ|
+|`gl.ELEMENT_ARRAY_BUFFER`|インデックスデータ|
 |`gl.COLOR_BUFFER_BIT`|3DCGの描画領域であるカラーバッファを示す|
+|`gl.STATIC_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容は何度か使用されてあまり変更されない。バッファーへ書き込めるが、読み出せない。|
+|`gl.DYNAMIC_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容はよく使用されて何度か変更される。バッファーへ書き込めるが、読み出せない。|
+|`gl.STREAM_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容はよく使用されよく変更される。バッファーへ書き込めるが、読み出せない。|
+
 
 ## 参考リンク
 
