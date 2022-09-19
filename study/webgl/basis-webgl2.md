@@ -46,6 +46,14 @@ const gl = canvas.getContext('webgl2');
 |`gl.clearColor()`|描画領域のクリアカラーを設定する|
 |`gl.createBuffer()`|頂点や色といったデータを格納する `WebGLBuffer` を作成、初期化する|
 |`gl.viewport(x, y, width, height)`|描画領域のビューポートを指定する|
+|`gl.shaderSource(shader, source)`|`WebGLShader` のソースコードを設定する|
+|`gl.compileShader(shader)`|GLSLシェーダーをバイナリへコンパイルする|
+|`gl.attachShader(program, shader)`|`WebGLShader` を `WebGLProgram` にアタッチする|
+|`gl.linkProgram(program)`|`WebGLProgram` に接続された頂点シェーダーとフラグメントシェーダーをリンクする|
+|`gl.useProgram(program)`|指定された `WebGLProgram` を現在の描画ステートの一部として設定する|
+|`gl.getAttribLocation(program, name)`|指定された `WebGLProgram` 内の属性の場所を返す|
+|`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在の頂点バッファーオブジェクトの一般的な頂点属性に結合して、そのレイアウトを指定する|
+|`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を、`attribute` 変数に対応付ける|
 
 ## 定数
 
