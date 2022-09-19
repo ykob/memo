@@ -54,6 +54,7 @@ const gl = canvas.getContext('webgl2');
 |`gl.getAttribLocation(program, name)`|指定された `WebGLProgram` 内の属性の場所を返す|
 |`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在の頂点バッファーオブジェクトの一般的な頂点属性に結合して、そのレイアウトを指定する|
 |`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を、`attribute` 変数に対応付ける|
+|`gl.drawElements(mode, count, type, offset)`|配列データのプリミティブ（`POINTS`, `LINES`, `TRIANGLES` などの型）を描画する|
 
 ## 定数
 
