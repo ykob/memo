@@ -58,6 +58,7 @@ gl.bufferData(gl.ARRAY_BUFFER, new FloatArray(vertices), gl.STATIC_DRAW);
 |API名|用途|
 |---|---|
 |`gl.bindBuffer(target, buffer)`|与えられた `WebGLBuffer` を `target` に結合する|
+|`gl.bufferData(target, srcData, usage, srcOffset, length)`|バッファオブジェクトのデータストアを初期化、作成する|
 |`gl.clear(mask)`|描画領域を指定した色でクリアする|
 |`gl.clearColor()`|描画領域のクリアカラーを設定する|
 |`gl.createBuffer()`|頂点や色といったデータを格納する `WebGLBuffer` を作成、初期化する|
