@@ -37,6 +37,22 @@ WebGLはマシンのGPU上で動作するため、GPU上で実行されるコー
 const gl = canvas.getContext('webgl2');
 ```
 
+## WebGLバッファの作成
+
+`gl.createBuffer()` で作成する `WebGLBuffer` をバインド (`gl.bindBuffer()`) すると、それ以降のバッファに対する操作は、バインドを解除するか別のバッファがバインドされるまで、バインド中のバッファに対して適用される。
+
+WebGLは常に現在バインドされているバッファを通じてデータを得る。つまり、ジオメトリを処理する操作を呼び出す前に必ずバッファがバインドされていなければならない。バッファがバインドされていない場合は `INVALID_OPERATION` エラーが発生する。 
+
+バッファをバインドすると次にそのバッファに値を指定する必要がある。それには `gl.bufferData()` 関数を利用する。  
+WebGLでは `bufferData` メソッドの引数としてJavaScript配列をそのまま使用できず、[型付き配列 (Typed Arrays)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Typed_arrays) に変換する必要がある。  
+頂点座標には浮動小数点数を利用できるが、インデックスには必ず整数を使用しなければならない。
+
+```
+const positionBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, new FloatArray(vertices), gl.STATIC_DRAW);
+```
+
 ## API
 
 |API名|用途|
