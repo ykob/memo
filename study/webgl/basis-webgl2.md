@@ -37,7 +37,7 @@ WebGLはマシンのGPU上で動作するため、GPU上で実行されるコー
 const gl = canvas.getContext('webgl2');
 ```
 
-## WebGLバッファの作成
+## WebGLバッファの作成・操作
 
 `gl.createBuffer()` で作成する `WebGLBuffer` をバインド (`gl.bindBuffer()`) すると、それ以降のバッファに対する操作は、バインドを解除するか別のバッファがバインドされるまで、バインド中のバッファに対して適用される。
 
@@ -51,6 +51,14 @@ WebGLでは `bufferData` メソッドの引数としてJavaScript配列をその
 const positionBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, new FloatArray(vertices), gl.STATIC_DRAW);
+```
+
+また、頂点シェーダーの `attribute` を現在バインドされているVBOに関連付ける必要がある。  
+WebGL関数 `gl.vertexAttribPointer()` が関連付けを行い、 `gl.enableVertexAttribArray()` が `attribute` の有効化を行う。
+
+```
+gl.vertexAttribPointer(index. size, type, normalize, stribe, offset);
+gl.enableVertexAttribArray(index);
 ```
 
 ## API
@@ -69,8 +77,8 @@ gl.bufferData(gl.ARRAY_BUFFER, new FloatArray(vertices), gl.STATIC_DRAW);
 |`gl.linkProgram(program)`|`WebGLProgram` に接続された頂点シェーダーとフラグメントシェーダーをリンクする|
 |`gl.useProgram(program)`|指定された `WebGLProgram` を現在の描画ステートの一部として設定する|
 |`gl.getAttribLocation(program, name)`|指定された `WebGLProgram` 内の属性の場所を返す|
-|`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在の頂点バッファーオブジェクトの一般的な頂点属性に結合して、そのレイアウトを指定する|
-|`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を、`attribute` 変数に対応付ける|
+|`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在バインドされているVBOの一般的な頂点属性に関連付ける|
+|`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を有効にする|
 |`gl.drawElements(mode, count, type, offset)`|配列データのプリミティブ（`POINTS`, `LINES`, `TRIANGLES` などの型）を描画する|
 
 ## 定数
