@@ -61,6 +61,18 @@ gl.vertexAttribPointer(index. size, type, normalize, stribe, offset);
 gl.enableVertexAttribArray(index);
 ```
 
+## レンダリング
+
+VBOを定義し、頂点シェーダーを `attribute` に関連付ければ、レンダリングの準備は完了する。   
+レンダリングに使用する関数には `drawArrays()` 関数と `drawElements()` 関数がある。
+
+- `drawArrays()` は頂点データをバッファ内で定義されている順番に使用する。
+- `drawElements()` はインデックスを使用して頂点データバッファにアクセスしてジオメトリを作成する。
+- いずれの関数も有効な頂点シェーダーの `attribute` に関連付けられたVBOだけを使用する。
+
+通常、有効化される配列の数は複数存在する。頂点の色、頂点ごとの法線、テクスチャ座標、など。  
+その場合、それぞれ有効な頂点シェーダの `attribute` に関連付けられることになる。
+
 ## API
 
 |API名|用途|
