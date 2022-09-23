@@ -115,6 +115,8 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在バインドされているVBOの一般的な頂点属性に関連付ける|
 |`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を有効にする|
 |`gl.drawElements(mode, count, type, offset)`|配列データのプリミティブ（`POINTS`, `LINES`, `TRIANGLES` などの型）を描画する|
+|`gl.createVertexArray()`|VAOインスタンスを作成する|
+|`gl.bindVertexArray(vertexArray)`|VAOインスタンスをバッファにバインドする|
 
 ## 定数
 
