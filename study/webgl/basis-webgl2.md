@@ -117,6 +117,9 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.drawElements(mode, count, type, offset)`|配列データのプリミティブ（`POINTS`, `LINES`, `TRIANGLES` などの型）を描画する|
 |`gl.createVertexArray()`|VAOインスタンスを作成する|
 |`gl.bindVertexArray(vertexArray)`|VAOインスタンスをバッファにバインドする|
+|`gl.getParameter(pname)`|`pname` に指定したパラメータの値を返す|
+|`gl.getBufferParameter(target, pname)`|`target` に渡したバッファの情報を返す|
+|`gl.isBuffer(buffer)`|引数の値が `WebGLBuffer` かどうかの `boolean` を返す|
 
 ## 定数
 
