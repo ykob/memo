@@ -125,13 +125,16 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 
 |定数名|用途|
 |---|---|
+|`gl.ARRAY_BUFFER_BINDING`|現在バインドされているVBO|
+|`gl.ELEMENT_ARRAY_BUFFER_BINDING`|現在バインドされているIBO|
 |`gl.ARRAY_BUFFER`|頂点データ|
 |`gl.ELEMENT_ARRAY_BUFFER`|インデックスデータ|
+|`gl.BUFFER_SIZE`|要求されたバッファのサイズを返す|
+|`gl.BUFFER_USAGE`|要求されたバッファの用途を返す|
 |`gl.COLOR_BUFFER_BIT`|3DCGの描画領域であるカラーバッファを示す|
 |`gl.STATIC_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容は何度か使用されてあまり変更されない。バッファーへ書き込めるが、読み出せない。|
 |`gl.DYNAMIC_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容はよく使用されて何度か変更される。バッファーへ書き込めるが、読み出せない。|
 |`gl.STREAM_DRAW`|`gl.bufferData()`に渡す、データストアの用途。バッファーの内容はよく使用されよく変更される。バッファーへ書き込めるが、読み出せない。|
-
 
 ## 参考リンク
 
