@@ -60,6 +60,11 @@ vec4 mvPosition = ModelViewMatrix * vec4(position, 1.0);
 
 この時点ではまだ同次座標を使用しているので、クリッピング座標は `(x, y, z, w)` で構成される。クリッピングを実現するには、`w` と `x, y, z` を比較する。いずれかが `+w` より大きいか、 `-w` より小さければ頂点は視錐台の外にあり無視される。
 
+### 透視分割
+
+ビュー空間のどの範囲を描画するかが決まると、視錐台は2D画像を生成するために近平面に投影される。つまり、近平面がスクリーンに描画される平面になる。
+WebGLとOpenGL ESは特定のハードウェアに依存しない中間的な座標を使用する。この空間を**正規化デバイス座標 (Normalized Device Coordinates: NDC)**と呼ぶ。
+
 ## 透視投影 (Perspective Projection)
 
 ## 平行投影 (Parallel Projection)
