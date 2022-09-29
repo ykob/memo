@@ -86,3 +86,8 @@ NDCには3要素しかない。NDC空間では`x`, `y`座標は正規化され�
 ## 透視投影 (Perspective Projection)
 
 ## 平行投影 (Parallel Projection)
+
+## 参考書籍
+
+- [初めてのWebGL 2 第2版](https://www.oreilly.co.jp/books/9784873119373/)
+- [Example](https://github.com/PacktPublishing/Real-Time-3D-Graphics-with-WebGL-2)
