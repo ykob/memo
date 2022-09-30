@@ -101,8 +101,13 @@ NDCには3要素しかない。NDC空間では`x`, `y`座標は正規化され�
 4. `gl.viewport`
 5. ビューポート座標
 
+## JavaScriptにおける行列演算
+
+WebGL JavaScript API には行列操作を実現する独自のメソッドは存在しない。  
+WebGLは行列をシェーダーに `uniform` として受け渡す手段を提供するのみなので、JavaScriptで行列を操作するにはそのためのJavaSciptライブラリを導入するなどの手順が必要になる。
 
 ## 参考書籍
 
 - [初めてのWebGL 2 第2版](https://www.oreilly.co.jp/books/9784873119373/)
 - [Example](https://github.com/PacktPublishing/Real-Time-3D-Graphics-with-WebGL-2)
+- [glMatrix](https://glmatrix.net/)
