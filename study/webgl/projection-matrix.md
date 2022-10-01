@@ -107,6 +107,22 @@ WebGL JavaScript API には行列操作を実現する独自のメソッドは�
 WebGLは行列をシェーダーに `uniform` として受け渡す手段を提供するのみなので、JavaScriptで行列を操作するにはそのためのJavaSciptライブラリを導入するなどの手順が必要になる。  
 代表的な行列演算ライブラリに [glMatrix](https://glmatrix.net/) がある。
 
+### glMatrix の代表的な関数
+
+|操作|構文|説明|
+|:---|:---|:---|
+|作成|`mat4.create()`|4x4行列オブジェクトを新規作成する|
+|単位行列|`mat4.identity(m)`|行列 `m` を単位行列（正方行列の対角成分が1で、それ以外が零である行列）に設定する|
+|コピー|`mat4.copy(target, origin)`|行列 `origin` を行列 `target` にコピーする|
+|転置行列|`mat4.transpose(target, m)`|行列 `target` を行列 `m` の転置行列に設定|
+|逆行列|`mat4.invert(target, m)`|行列 `target` を行列 `m` の逆行列に設定|
+|回転|`mat4.rotate(target, m, r, a)`|行列 `m` をベクトル `a` を軸に `r` ラジアン分回転した結果を、行列 `target` に設定する|
+
+## 行列を `uniform` に関連付ける
+
+モデルビュー行列と投影行列は一度の描画処理の間は変更されないので `uniform` として、レンダリングを実行する前にシェーダーに渡す。  
+
+
 ## 参考書籍
 
 - [初めてのWebGL 2 第2版](https://www.oreilly.co.jp/books/9784873119373/)
