@@ -111,7 +111,7 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.attachShader(program, shader)`|`WebGLShader` を `WebGLProgram` にアタッチする|
 |`gl.linkProgram(program)`|`WebGLProgram` に接続された頂点シェーダーとフラグメントシェーダーをリンクする|
 |`gl.useProgram(program)`|指定された `WebGLProgram` を現在の描画ステートの一部として設定する|
-|`gl.getAttribLocation(program, name)`|指定された `WebGLProgram` 内の属性の場所を返す|
+|`gl.getAttribLocation(program, name)`|指定された `WebGLProgram` 内の `attribute` の場所を返す|
 |`gl.vertexAttribPointer(index, size, type, normalized, stride, offset)`|現在 `gl.ARRAY_BUFFER` に結合されているバッファーを、現在バインドされているVBOの一般的な頂点属性に関連付ける|
 |`gl.enableVertexAttribArray(index)`|指定された `index` の頂点情報を有効にする|
 |`gl.drawElements(mode, count, type, offset)`|配列データのプリミティブ（`POINTS`, `LINES`, `TRIANGLES` などの型）を描画する|
@@ -120,6 +120,7 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.getParameter(pname)`|`pname` に指定したパラメータの値を返す|
 |`gl.getBufferParameter(target, pname)`|`target` に渡したバッファの情報を返す|
 |`gl.isBuffer(buffer)`|引数の値が `WebGLBuffer` かどうかの `boolean` を返す|
+|`gl.getUniformLocation(program, name)`|指定された `WebGLProgram` 内の `uniform` の場所を返す|
 |`gl.uniformMatrix2fv(location, transpose, value)`|2×2行列の値 `value` を `uniform` の値に指定する。|
 |`gl.uniformMatrix3fv(location, transpose, value)`|3×3行列の値 `value` を `uniform` の値に指定する。|
 |`gl.uniformMatrix4fv(location, transpose, value)`|4×4行列の値 `value` を `uniform` の値に指定する。|
