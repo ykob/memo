@@ -120,6 +120,9 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.getParameter(pname)`|`pname` に指定したパラメータの値を返す|
 |`gl.getBufferParameter(target, pname)`|`target` に渡したバッファの情報を返す|
 |`gl.isBuffer(buffer)`|引数の値が `WebGLBuffer` かどうかの `boolean` を返す|
+|`gl.uniformMatrix2fv(location, transpose, value)`|2×2行列の値 `value` を `uniform` の値に指定する。|
+|`gl.uniformMatrix3fv(location, transpose, value)`|3×3行列の値 `value` を `uniform` の値に指定する。|
+|`gl.uniformMatrix4fv(location, transpose, value)`|4×4行列の値 `value` を `uniform` の値に指定する。|
 
 ## 定数
 
