@@ -96,6 +96,11 @@ VAOを使用しないとすべての `attribute` がグローバルに保持さ�
 
 VAOを使用すれば、初期化時にすべての `attribute` を準備しておけばよく、描画時にはVAOをバインドするだけですべての `attribute` の設定が完了し。パフォーマンスを向上させられる。
 
+## `uniform`
+
+`uniform` は頂点シェーダー、フラグメントシェーダーの両方で利用できる。  
+`attribute` は頂点シェーダーが実行されるたびに値が変わるが、 `uniform` はレンダリングサイクル内（WebGLが `drawArrays()` か `drawElements()` を実行している間）では同じ値が維持される。
+
 ## API
 
 |API名|用途|
@@ -121,9 +126,8 @@ VAOを使用すれば、初期化時にすべての `attribute` を準備して�
 |`gl.getBufferParameter(target, pname)`|`target` に渡したバッファの情報を返す|
 |`gl.isBuffer(buffer)`|引数の値が `WebGLBuffer` かどうかの `boolean` を返す|
 |`gl.getUniformLocation(program, name)`|指定された `WebGLProgram` 内の `uniform` の場所を返す|
-|`gl.uniformMatrix2fv(location, transpose, value)`|2×2行列の値 `value` を `uniform` の値に指定する。|
-|`gl.uniformMatrix3fv(location, transpose, value)`|3×3行列の値 `value` を `uniform` の値に指定する。|
-|`gl.uniformMatrix4fv(location, transpose, value)`|4×4行列の値 `value` を `uniform` の値に指定する。|
+|`gl.uniform[1234][uif][v]()`|指定の型の値を `uniform` に割り当てる|
+|`gl.uniformMatrix[234]fv(location, transpose, value)`|指定の型の行列 `value` を `uniform` に割り当てる|
 
 ## 定数
 
