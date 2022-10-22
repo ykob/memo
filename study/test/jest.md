@@ -19,6 +19,19 @@ const fn2 = jest.fn().mockImplementation(() => true);
 const fn3 = jest.fn().mockReturnValue(true);
 ```
 
+`mockReturnValueOnce` を用いると、モック関数を呼び出す回数に応じて戻り値を変更することができる。
+
+```
+const fn = jest.fn()
+  .mockReturnValueOnce(1)
+  .mockReturnValueOnce(2)
+  .mockReturnValue(0);
+
+expect(fn).toBe(1);
+expect(fn).toBe(2);
+expect(fn).toBe(0);
+```
+
 ### `jest.spyOn(object, methodName)`
 
 `object[methodName]` のモック関数を返す。  
