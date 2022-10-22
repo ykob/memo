@@ -13,10 +13,32 @@
 さらに、引数を必要とせずに固定の値を返す関数を定義したい場合は `jest.fn().mockReturnValue` を利用することもできる。
 
 ```
-// true を返すモック関数
+// true を返すモック関数を作成する
 const fn1 = jest.fn(() => true);
 const fn2 = jest.fn().mockImplementation(() => true);
 const fn3 = jest.fn().mockReturnValue(true);
+```
+
+### `jest.spyOn(object, methodName)`
+
+`object[methodName]` のモック関数を返す。  
+オブジェクトとそれが持つメソッド名を指定することで、そのモック関数を作成できる。
+組み込み関数や独自のインスタンスなどを `object` に指定して利用する。
+
+```
+// TestModule インスタンスの methodName メソッドをモック関数にする
+const instance = new TestModule();
+const mockMethod = jest.spyOn(instance, 'methodName');
+
+mockMethod.mockReturnValue(true);
+```
+
+例えば、乱数を返す組み込み関数の `Math.random()` を用いてその戻り値を指定したモック関数を作成したい場合は、以下のようにして実現できる。
+
+```
+const random = jest.spyOn(global.Math, 'random');
+
+random.mockReturnValue(0.5);
 ```
 
 ## 参考リンク
