@@ -16,6 +16,23 @@ npm install --save-dev jest
 yarn add --dev jest
 ```
 
+## アサーションとマッチャー
+
+アサーションとは、記述した処理の応答が正しいものかどうかをチェックすること。  
+Jestではアサーションに `expect` を用いる。
+
+- [Expect · Jest](https://jestjs.io/ja/docs/expect)
+
+`expect` オブジェクトにはマッチャー `Matcher` と呼ばれるメソッドが多数存在する。  
+マッチャーは値の検証方法を示すメソッドであり、マッチャーを用いることで `expect` の第一引数に渡した値が意図した値になっているかどうかを確認することができる。
+
+`expect` を用いて値を検証する単純な例は以下のようになる。
+
+```
+// value は true である。
+expect(value).toBe(true);
+```
+
 ## モック関数
 
 モック関数の役割については、公式に記載のとおり。
