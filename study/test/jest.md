@@ -108,6 +108,11 @@ const random = jest.spyOn(global.Math, 'random');
 random.mockReturnValue(0.5);
 ```
 
+### `jest.mock(moduleName, factory, options)`
+
+`moduleName` で指定したモジュールが `require` あるいは `import` された際に、そのモックを自動的に作成する。  
+
+
 ## 参考リンク
 
 - [Jest](https://jestjs.io/ja/)
