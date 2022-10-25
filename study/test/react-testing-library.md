@@ -9,8 +9,8 @@ DOM ノードのテストを行うライブラリである `DOM Testing Library`
 
 以下ライブラリも同時にインストールされ、併用することになる。
 
-- `@testing-library/jest-dom` ... DOMノードにアクセスできるマッチャーを `jest` のAPIに追加する。
-- 
+- `@testing-library/dom` ... DOMノードにアクセスできる API を追加する。 `screen`, `getBy...` など。
+- `@testing-library/jest-dom` ... DOMノードにアクセスできるマッチャーを `jest` のAPIに追加する。 `toBeInTheDocument` など。
 
 ## インストール
 
