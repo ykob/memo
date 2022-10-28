@@ -16,5 +16,7 @@ E2Eテストにおいては、ユーザーとしてUI上でどのように振る
 | API | 用途 |
 | --- | --- |
 | `I.amOnPage(url)` | `url` のページに遷移する。 |
-| `I.seeElement(element)` | `element` の要素が存在しているかどうかを確認する。<br>`element` は CSS のセレクタ、もしくは XPath の形式で記述する。 |
-| `I.click(label, element?)` | `label` で指定した要素をクリックする。<br>`label` の文字列は特定の属性値を指すが、HTML要素の種類によって参照する属性が異なる。 `button` の場合は `value` や `name` が、 `img` の場合は `alt` が対象となる。 CSS のセレクタ、もしくは XPath の形式で記述することもできる。 |
+| `I.see(text, context?)` | `text` の文字列が存在しているかどうかを確認する。<br>`context` の要素で検索対象をスコープできる。 |
+| `I.seeElement(context)` | `context` の要素が存在しているかどうかを確認する。<br>`context` は CSS のセレクタ、もしくは XPath の形式で記述する。 |
+| `I.click(locator, context?)` | `locator` で指定した要素をクリックする。<br>`locator` の文字列は特定の属性値を指すが、HTML要素の種類によって参照する属性が異なる。 `button` の場合は `value` や `name` が、 `img` の場合は `alt` が対象となる。 CSS のセレクタ、もしくは XPath の形式で記述することもできる。 |
+| `I.fillField(field, value)` | `field` で指定した要素に `value` を入力する。`field` は要素の `name` または `label` の属性値を参照する。CSS のセレクタ、もしくは XPath の形式で記述することもできる。 |
