@@ -17,3 +17,11 @@
 モックデータやテストに利用できるデータを容易に作成・出力することができる。
 
 - [faker-js/faker: Generate massive amounts of fake data in the browser and node.js](https://github.com/faker-js/faker)
+
+### msw (Mock Server Worker)
+
+API リクエストのモック化を行うライブラリ。  
+テスト時に実行される API リクエストを実際のアプリケーションサーバに対して行うのではなく、 msw によって作成されたサーバーに対して行われるようにモック化をして、テストの安定化を図る。  
+REST API だけでなく GraphQL にも対応している。
+
+- [MSW – Seamless API mocking library for browser and Node | Mock Service Worker](https://mswjs.io/)
