@@ -37,6 +37,29 @@ yarn add --dev @testing-library/react
 - `getByText(value)` ... `@testing-library/dom` が提供するメソッドで、 `scree` などにつなげて利用する。 `value` に代入した文字列を取得する。
 - `toBeInTheDocument()` ... `jest-dom` の提供するマッチャー関数で、 `expect` の `value` に代入した要素がドキュメント内に存在するかどうかを判定する。
 
+## next/router のモック
+
+`jest.spyOn` を用いてモックする。  
+具体的には以下のように記述する。
+
+```
+const useRouter = jest.spyOn(require("next/router"), "useRouter");
+```
+
+`useRouter` はモック関数なので `mockImplementation` などをつなげて実行できる。  
+routerと同様のオブジェクトを代入することでrouterの挙動をテストコード上で制御することができる。
+
+```
+useRouter.mockImplementation(() => ({
+  isReady: true,
+  query: {},
+}));
+```
+
+`require` を使用すると ESLint のルールによっては怒られることがあるが、根本的な回避策は今のところわかっていない。  
+一般的に好ましい方法ではないが、 `// eslint-disable-next-line` を使うなどして回避する。
+
+
 ## 参考リンク
 
 - [React Testing Library | Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
