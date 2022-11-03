@@ -14,9 +14,18 @@
 ### Faker (faker.js)
 
 ダミーデータを生成するためのライブラリ。
-モックデータやテストに利用できるデータを容易に作成・出力することができる。
+モックやテストに利用できるデータを容易に作成・出力することができる。
 
 - [faker-js/faker: Generate massive amounts of fake data in the browser and node.js](https://github.com/faker-js/faker)
+
+### Fishery
+
+テストに使用するための JavaScript オブジェクトを生成するためのライブラリ。  
+`Factory` という関数を用いてオブジェクトを生成する。  
+`Factory.define()` で独自のオブジェクトを生成するための Factory 関数を作成し、 `factory.build()` を実行して実際にオブジェクトを生成する。  
+`buildList(count)` を使用することで同様の型のオブジェクトを複数同時に生成することもできる。
+
+- [thoughtbot/fishery: A library for setting up JavaScript objects as test data](https://github.com/thoughtbot/fishery)
 
 ### msw (Mock Server Worker)
 
