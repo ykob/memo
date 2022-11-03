@@ -40,13 +40,13 @@ yarn add --dev @testing-library/react
 ## next/router のモック
 
 `jest.spyOn` を用いてモックする。  
-具体的には以下のように記述する。
+具体的には以下のように記述してモック関数を定義する。
 
 ```
 const useRouter = jest.spyOn(require("next/router"), "useRouter");
 ```
 
-`useRouter` はモック関数なので `mockImplementation` などをつなげて実行できる。  
+ここで定義された変数 `useRouter` は jest のモック関数なので `mockImplementation` などをつなげて実行できる。  
 routerと同様のオブジェクトを代入することでrouterの挙動をテストコード上で制御することができる。
 
 ```
