@@ -15,7 +15,7 @@ Next.js には標準で含まれている。
 
 いずれも同様の候補が複数選べそうではあるが、 Next.js を用いる場合は導入の手間が省けることから他の選択肢よりも優位になるかもしれない。
 
-## CSS の書き方
+## `styled-jsx` における基本的な CSS の書き方
 
 `<style jsx>` タグを React Component 内の JSX に追加し、その中身に CSS をテンプレートリテラルで記述する。
 
@@ -71,7 +71,7 @@ CSS の値が変化したコンポーネントは、以下のようにレンダ�
 export default function (props) {
   const styles = `
     div {
-      margin: ${props.margin || "1rem"};
+      margin: 1rem;
     }
   `
 
@@ -88,12 +88,8 @@ export default function (props) {
 
 ```
 <style type="text/css" data-styled-jsx="">
-  .block {
-    overflow: hidden;
-    background-color: #333;
-  }
-  .label {
-    color: #fff;
+  div {
+    margin: 1rem;
   }
 </style>
 ```
