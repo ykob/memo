@@ -20,12 +20,12 @@ Next.js には標準で含まれている。
 `<style jsx>` タグを React Component 内の JSX に追加し、その中身に CSS をテンプレートリテラルで記述する。
 
 ```
-export default function () {
+export default function (props) {
   return (
     <div>
-      <Component className="component" />
+      { props.children }
       <style jsx>{`
-        .component {
+        div {
           margin: 1rem;
         }
       `}</style>
@@ -38,7 +38,7 @@ export default function () {
 ユニークな ID と className も自動付与され、これによって CSS のスコープも行われる。
 
 ```
-<style id="__jsx-1691720380">.component.jsx-1691720380{margin:1rem}</style>
+<style id="__jsx-1691720380">div.jsx-1691720380{margin:1rem}</style>
 ```
 
 `props` などによって CSS の値を動的にすることもできる。
@@ -47,9 +47,9 @@ export default function () {
 export default function (props) {
   return (
     <div>
-      <Component className="component" />
+      { props.children }
       <style jsx>{`
-        .component {
+        div {
           margin: ${props.margin || "1rem"};
         }
       `}</style>
@@ -61,28 +61,62 @@ export default function (props) {
 CSS の値が変化したコンポーネントは、以下のようにレンダリング時にそれぞれにユニークな採番がされ異なる `style` タグで生成される。
 
 ```
-<style id="__jsx-1691720380">.component.jsx-1691720380{margin:1rem}</style>
-<style id="__jsx-382387474">.component.jsx-382387474{margin:2rem}</style>
+<style id="__jsx-1691720380">div.jsx-1691720380{margin:1rem}</style>
+<style id="__jsx-382387474">div.jsx-382387474{margin:2rem}</style>
+```
+
+また CSS のテンプレートリテラルを HTML の JSX の外に定義すると、レンダリング時に CSS のカプセル化がされない。
+
+```
+export default function (props) {
+  const styles = `
+    div {
+      margin: ${props.margin || "1rem"};
+    }
+  `
+
+  return (
+    <div>
+      { props.children }
+      <style jsx>{styles}</style>
+    </div>
+  );
+}
+```
+
+上記のように書くと、コンポーネントのレンダリング時に以下のような `jsx-` というプレフィクスが付かないグローバルな CSS が生成されてしまう。見た目上は一見 CSS が問題なく適用されているように見えることもあるが、この状態では `styled-jsx` を導入する利点が薄まるので、コンポーネント内の CSS の記述箇所には注意する。
+
+```
+<style type="text/css" data-styled-jsx="">
+  .block {
+    overflow: hidden;
+    background-color: #333;
+  }
+  .label {
+    color: #fff;
+  }
+</style>
 ```
 
 ## タグ付きテンプレートリテラル `css` を用いる
 
 `css` という `styled-jsx` が提供するタグ付きテンプレートリテラルを用いて記述することもできる。  
+上述した `css` を使わないテンプレートリテラルを用いた場合とは異なり、カプセル化も行われる。  
 CSS の記述を HTML 要素の JSX と分離させられるので、可読性は良さそう。
 
 ```
 import css from "styled-jsx/css";
 
-export default function () {
+export default function (props) {
   const styles = css`
-    .component {
+    div {
       margin: 1rem;
     }
   `;
 
   return (
     <div>
-      <Component className="component" />
+      { props.children }
       <style jsx>{styles}</style>
     </div>
   );
@@ -97,21 +131,51 @@ import css from "styled-jsx/css";
 
 export default function (props) {
   const styles = css`
-    .component {
+    div {
       margin: ${props.margin || "1rem"};
     }
   `;
 
   return (
     <div>
-      <Component className="component" />
+      { props.children }
       <style jsx>{styles}</style>
     </div>
   );
 }
 ```
 
-`css` を利用しながら `props` などによってコンポーネントの見た目にバリエーションを持たせたい場合は、 `css` テンプレートリテラル内にバリエーション用の className を予め定義しておき、 `props` の値に応じて条件分岐で振り分けるようにすれば期待どおりに動作させられるので、
+`css` を利用しながら `props` などによってコンポーネントの見た目にバリエーションを持たせたい場合は、 `css` テンプレートリテラル内にバリエーション用の className を予め定義しておき、 `props` の値に応じて条件分岐で振り分けるようにすれば期待どおりに動作させられる。
+
+```
+import css from "styled-jsx/css";
+
+export default function (props) {
+  const className = props.bgColor || "red";
+  const styles = css`
+    div {
+      margin: 1em;
+    }
+    div.red {
+      background-color: red;
+    }
+  `;
+
+  return (
+    <div>
+      { props.children }
+      <style jsx>{styles}</style>
+    </div>
+  );
+}
+```
+
+ただしこの場合は以下のようにコンポーネントのレンダリング時に使用していない className もすべて含めた style タグが生成される。  
+CSS の分岐パターン数が多くなる場合は style 内の文量が不必要にあふれるため、複雑なコンポーネントの場合は使用を避けるべきかもしれない。（些細な差に過ぎないかもしれないが）
+
+```
+<style id="__jsx-13a770607a2ac7ac">div.jsx-13a770607a2ac7ac{margin:1rem}div.red.jsx-13a770607a2ac7ac{background-color:red}</style>
+```
 
 ## 備考
 
