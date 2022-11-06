@@ -180,6 +180,95 @@ div.red.jsx-13a770607a2ac7ac{background-color:red}
 </style>
 ```
 
+## 親コンポーネントで定義した CSS を子コンポーネントに付与する
+
+上述したやり方そのままで、親コンポーネントで定義した CSS テンプレートリテラルの className を子コンポーネントに付与するだけでは、親側で記述した CSS を子に適用させることはできない。親から子に `props` を用いて className の値を渡しても、子の要素の className には `jsx-13a770607a2ac7ac` というようなユニークな採番がされず CSS も適用されない。
+
+```
+const Component = function (props) {
+  return <div className={props.className}>{props.children}</div>;
+};
+
+export default function () {
+  return (
+    <div>
+      <Component className="child">This is a component.</Component>
+      <style jsx>{`
+        .child {
+          margin-bottom: 1rem;
+        }
+      `}</style>
+    </div>
+  );
+}
+```
+
+レンダリング時に出力された結果を見ると、`style` タグは生成されるが、子の HTML には className が付与されていないことがわかる。
+
+
+```
+<style id="__jsx-aadc64cd81b73338">.child.jsx-aadc64cd81b73338{margin-bottom:1rem}</style>
+
+<div class="jsx-aadc64cd81b73338">
+  <div class="child">This is a component.</div>
+</div>
+```
+
+とはいえ、コンポーネントに付与したい CSS はすべて該当のコンポーネント内の記述のみに集中させるといったような設計では、実用の面で不便さが残る。  
+外側からの CSS の付与によって元からコンポーネントが持っていた CSS のルールを闇雲に上書きして破壊するのは悪手なので避けるべきだが、そういった破壊的な意図による例を除外したとしても実際には親で定義した CSS を子に付与したいケースは頻出する。  
+具体例の一つとして、一般的にコンポーネント内の最上位の要素に直接指定すべきではない `margin` の付与などが挙げられる。
+
+このケースに対応するために `styled-jsx` では主に以下 2 つの手段が提供されている。
+
+1. `css.resolve` を使う
+2. `:global` を使う
+
+### `css.resolve` を使う
+
+`css.resolve` の使い方は公式ドキュメントを参照する。
+
+- [The resolve tag](https://github.com/vercel/styled-jsx#the-resolve-tag)
+
+`css.resolve` は `{ className: string; styles: JSX.Element }` という型のオブジェクトを返す。  
+受け取った `className` はコンポーネントの className に渡し、 `styles` は **`style` タグで囲まずに**そのまま JSX 内に出力させる。
+
+```
+import css from "styled-jsx/css";
+
+const Component = function (props) {
+  return <div className={props.className}>{props.children}</div>;
+};
+
+export default function () {
+  const cssResolve = css.resolve`
+    .child {
+      margin-bottom: 1rem;
+    }
+  `;
+
+  return (
+    <div>
+      <Component className={`child ${cssResolve.className}`}>
+        This is a component.
+      </Component>
+      {cssResolve.styles}
+    </div>
+  );
+}
+```
+
+上記のようにコンポーネントを記述すると、レンダリング時に以下のように採番されたユニークな className を用いて `style` タグと子の HTML を出力してくれるので、親で定義した CSS を子に適用させることができるようになる。
+
+```
+<style id="__jsx-a43c8f37574f0aef">.child.jsx-a43c8f37574f0aef{margin-bottom:1rem}</style>
+
+<div>
+  <div class="child jsx-a43c8f37574f0aef">This is a component.</div>
+</div>
+```
+
+### `:global` を使う
+
 ## 備考
 
 - Create React App で作成したプロジェクトにも導入を試みたが、 `eject` の必要があるなど多少面倒そうだった。環境によって導入コストに大きく差がありそう。
