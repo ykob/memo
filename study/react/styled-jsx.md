@@ -205,7 +205,6 @@ export default function () {
 
 レンダリング時に出力された結果を見ると、`style` タグは生成されるが、子の HTML には className が付与されていないことがわかる。
 
-
 ```
 <style id="__jsx-aadc64cd81b73338">.child.jsx-aadc64cd81b73338{margin-bottom:1rem}</style>
 
@@ -221,7 +220,7 @@ export default function () {
 このケースに対応するために `styled-jsx` では主に以下 2 つの手段が提供されている。
 
 1. `css.resolve` を使う
-2. `:global` を使う
+2. One-off global selectors `:global` を使う
 
 ### `css.resolve` を使う
 
@@ -267,7 +266,44 @@ export default function () {
 </div>
 ```
 
-### `:global` を使う
+### One-off global selectors `:global` を使う
+
+`css.resolve` を使わずとも `:global` セレクタを用いて CSS を記述することで親で定義した CSS を子に適用することができる。
+
+```
+import css from "styled-jsx/css";
+
+const Component = function (props) {
+  return <div className={props.className}>{props.children}</div>;
+};
+
+export default function () {
+  const styles = css`
+    div :global(.child) {
+      margin-bottom: 1rem;
+    }
+  `;
+  return (
+    <div>
+      <Component className="child">This is a component.</Component>
+      <style jsx>{styles}</style>
+    </div>
+  );
+}
+```
+
+上記のように記述すると、レンダリング時に CSS と HTML がそれぞれ以下のように出力される。
+
+```
+<style id="__jsx-820a7ad9c23122e6">div.jsx-820a7ad9c23122e6 .child{margin-bottom:1rem}</style>
+
+<div class="jsx-820a7ad9c23122e6">
+  <div class="child">This is a component.</div>
+</div>
+```
+
+子コンポーネント自体にはユニークな className が付与されない。  
+あくまで親コンポーネントからの子孫結合子として子コンポーネントのセレクタを記述することで子に対して CSS を適用させているに過ぎず、CSS セレクタの記述の仕方によっては容易にグローバル汚染を引き起こす懸念がある。
 
 ## 備考
 
