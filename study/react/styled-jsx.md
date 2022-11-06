@@ -147,10 +147,13 @@ export default function (props) {
 import css from "styled-jsx/css";
 
 export default function (props) {
-  const className = props.bgColor || "red";
+  const className = props.hasBgColor ? "red" : "white";
   const styles = css`
     div {
       margin: 1em;
+    }
+    div.white {
+      background-color: white;
     }
     div.red {
       background-color: red;
@@ -158,7 +161,7 @@ export default function (props) {
   `;
 
   return (
-    <div>
+    <div className={className}>
       { props.children }
       <style jsx>{styles}</style>
     </div>
@@ -167,10 +170,14 @@ export default function (props) {
 ```
 
 ただしこの場合は以下のようにコンポーネントのレンダリング時に使用していない className もすべて含めた style タグが生成される。  
-CSS の分岐パターン数が多くなる場合は style 内の文量が不必要にあふれるため、複雑なコンポーネントの場合は使用を避けるべきかもしれない。（些細な差に過ぎないかもしれないが）
+CSS の分岐パターン数が多くなる場合は `style` 内の文量が不必要にあふれるため、複雑な構造を持つコンポーネントの場合は（些細な差に過ぎないかもしれないが）この記述方法を避けるべきかもしれない。
 
 ```
-<style id="__jsx-13a770607a2ac7ac">div.jsx-13a770607a2ac7ac{margin:1rem}div.red.jsx-13a770607a2ac7ac{background-color:red}</style>
+<style id="__jsx-13a770607a2ac7ac">
+div.jsx-13a770607a2ac7ac{margin:1rem}
+div.white.jsx-13a770607a2ac7ac{background-color:white}
+div.red.jsx-13a770607a2ac7ac{background-color:red}
+</style>
 ```
 
 ## 備考
