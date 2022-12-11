@@ -1,9 +1,9 @@
-# GitHub SSH接続 覚書
+# GitHub SSH 接続 覚書
 
 ## ポート番号 `22` による接続ができない。
 
 GitHub
-wifi環境によってはポート番号 `22` で `git@github.com` にアクセスできないことがある。  
+wifi 環境によってはポート番号 `22` で `git@github.com` にアクセスできないことがある。  
 その場合、接続時に以下エラーが返る。
 
 ```
@@ -61,10 +61,10 @@ Hi [username]! You've successfully authenticated, but GitHub does not provide sh
 
 ### SourceTree
 
-SourceTree付属のPuTTYgenで生成した公開鍵だとポート番号 `443` による接続に失敗することがあった。  
+SourceTree 付属の PuTTYgen で生成した公開鍵だとポート番号 `443` による接続に失敗することがあった。  
 (詳細な原因は追い切れていないので、可能な方法もあるかもしれない。)
 
-その場合、以下コマンドによってSSH接続可能な鍵ファイルを生成することができた。
+その場合、以下コマンドによって SSH 接続可能な鍵ファイルを生成することができた。
 
 ```
 ssh-keygen -t rsa
