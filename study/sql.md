@@ -25,3 +25,20 @@
 ### 日付型
 
 - `datetime` ：日付
+
+## CREATE 文
+
+DBそのものや、テーブルなどのDB上のオブジェクトを作成する。  
+
+```
+CREATE TABLE table_name (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(60) NOT NULL,
+  PRIMARY KEY (id)
+)
+;
+```
+
+- `AUTO_INCREMENT` ：レコードの識別子となるユニークな値を生成できる
+- `PRIMARY KEY (id)` ：レコードの識別子となるユニークな値を指定する
+
