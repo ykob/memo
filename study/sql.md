@@ -54,3 +54,14 @@ INSERT INTO table_name SET
 ;
 ```
 
+## SELECT 文
+
+1つもしくは複数のテーブルからデータを抽出する。
+
+```
+SELECT name AS person_name FROM table_name WHERE name = 'Taro Yamada'
+;
+```
+
+- `AS` : 取得したデータの列名を別の名称に変更する
+- `WHERE` : 条件式を用いてデータを絞り込む
