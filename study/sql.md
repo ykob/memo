@@ -65,3 +65,12 @@ SELECT name AS person_name FROM table_name WHERE name = 'Taro Yamada'
 
 - `AS` : 取得したデータの列名を別の名称に変更する
 - `WHERE` : 条件式を用いてデータを絞り込む
+
+## UPDATE 文
+
+既存のデータを更新する。
+
+```_
+UPDATE table_name SET name = 'Jiro Tanaka' WHERE id = 1
+;
+```
