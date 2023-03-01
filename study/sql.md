@@ -63,8 +63,15 @@ SELECT name AS person_name FROM table_name WHERE name = 'Taro Yamada'
 ;
 ```
 
+```
+SELECT name FROM table_name GROUP BY name
+;
+```
+
 - `AS` : 取得したデータの列名を別の名称に変更する
-- `WHERE` : 条件式を用いてデータを絞り込む
+- `WHERE` : 条件式を用いてデータを絞り込む、グループ化前に行う
+- `HAVING` : 条件式を用いてデータを絞り込む、グループ化後に行う
+- `GROUP BY` : 列内で同じ値となるレコードをまとめて出力する
 
 ## UPDATE 文
 
@@ -80,5 +87,4 @@ UPDATE table_name SET name = 'Jiro Tanaka' WHERE id IN (1, 2, 3)
 ;
 ```
 
-- `WHERE` : 更新する対象を絞り込むための条件の値を指定する
-- `IN` : 更新する対象を絞り込むための条件の値を複数指定する
+- `WHERE IN` : データを絞り込むための条件式の値を複数指定する
