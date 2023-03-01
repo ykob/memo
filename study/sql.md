@@ -74,3 +74,11 @@ SELECT name AS person_name FROM table_name WHERE name = 'Taro Yamada'
 UPDATE table_name SET name = 'Jiro Tanaka' WHERE id = 1
 ;
 ```
+
+```_
+UPDATE table_name SET name = 'Jiro Tanaka' WHERE id IN (1, 2, 3)
+;
+```
+
+- `WHERE` : 更新する対象を絞り込むための条件の値を指定する
+- `IN` : 更新する対象を絞り込むための条件の値を複数指定する
