@@ -43,6 +43,7 @@ CREATE TABLE table_name (
 - `AUTO_INCREMENT` : レコードの識別子となるユニークな値を生成できる
 - `PRIMARY KEY (id)` : レコードの識別子となるユニークな値を指定する
 - `ENGINE` : 利用するストレージエンジンを指定する。省略するとデフォルトのストレージエンジン (InnoDB) が使用される
+- `NOT NULL` : Null 値が列に入力されないようにする
 
 ## INSERT 文
 
