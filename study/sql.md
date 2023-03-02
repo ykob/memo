@@ -57,7 +57,7 @@ INSERT INTO table_name SET
 
 ## SELECT 文
 
-1つもしくは複数のテーブルからデータを抽出する。
+1 つもしくは複数のテーブルからデータを抽出する。
 
 ```
 SELECT name AS person_name FROM table_name WHERE name = 'Taro Yamada'
