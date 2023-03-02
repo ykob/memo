@@ -89,3 +89,14 @@ UPDATE table_name SET name = 'Jiro Tanaka' WHERE id IN (1, 2, 3)
 ```
 
 - `WHERE IN` : データを絞り込むための条件式の値を複数指定する
+
+## DELETE 文
+
+テーブルからデータを削除する。
+
+```
+DELETE FROM table_name WHERE name = 'Taro Yamada'
+;
+```
+
+- `ORDER BY` : 抽出したデータを並び替える。
