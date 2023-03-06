@@ -21,3 +21,21 @@ FROM mysql:latest
 ADD ./env/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
 ```
+
+## `docker-entrypoint-initdb.d`
+
+Docker の MySQL イメージでは `docker-entrypoint-initdb.d` というディレクトリ内にスクリプトのファイルを配置しておくと、MySQL イメージがコンテナを作成・起動する際にそれらを実行する。
+データベースのテーブルやデータを作成する SQL ファイルを配置することで、MySQL コンテナの生成・起動時にファイルにデータを作成することができる。
+
+```
+version: "3"
+
+services:
+  mysql:
+    image: mydql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+```
