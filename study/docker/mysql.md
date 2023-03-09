@@ -1,6 +1,22 @@
-# Docker で MySQL を構築する
+# Docker で PHP + MySQL の環境を構築する
 
-## `my.cnf`
+## PHP
+
+### Dockerfile
+
+`mysqli` などのモジュールのインストールは Dockerfile に記述しておく。
+
+```
+FROM php:7.2-apache
+COPY ./php.ini /usr/local/etc/php/
+RUN apt-get update && docker-php-ext-install mysqli
+```
+
+### MySQL に接続する
+
+## MySQL
+
+### `my.cnf`
 
 `my.cnf` は MySQL 起動時の設定ファイル。  
 以下のようにして文字のエンコード指定などを記述できる。
@@ -22,7 +38,7 @@ ADD ./env/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
 ```
 
-## `docker-entrypoint-initdb.d`
+### `docker-entrypoint-initdb.d`
 
 Docker の MySQL イメージでは `docker-entrypoint-initdb.d` というディレクトリ内にスクリプトのファイルを配置しておくと、MySQL イメージがコンテナを作成・起動する際にそれらを実行する。
 データベースのテーブルやデータを作成する SQL ファイルを配置することで、MySQL コンテナの生成・起動時にファイルにデータを作成することができる。
