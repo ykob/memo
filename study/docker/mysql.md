@@ -14,6 +14,22 @@ RUN apt-get update && docker-php-ext-install mysqli
 
 ### MySQL に接続する
 
+- `mysqli_connect` : 新規にMySQLサーバーへの接続をオープンする
+- `mysqli_select_db` : クエリを実行するための標準のデータベースを選択する
+- `mysqli_query` : データベース上でクエリを実行して、結果を返す
+- `mysqli_fetch_assoc` クエリ実行の結果セットから１行取得し、連想配列として返す
+
+```
+<?php
+  $mysqli = mysqli_connect('mysql', 'test', 'test', 'test');
+  mysqli_select_db($mysqli, 'test');
+  $data = mysqli_query($mysqli, 'SELECT name FROM person');
+
+  $row = mysqli_fetch_assoc($data);
+  echo $row['name'];
+?>
+```
+
 ## MySQL
 
 ### `my.cnf`
