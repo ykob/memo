@@ -73,3 +73,16 @@ services:
     volumes:
       - ./init:/docker-entrypoint-initdb.d
 ```
+
+### PHPからMySQLを接続する際に `SQLSTATE[HY000] [2054]` のエラーを回避する
+
+MySQL8.0.4以降からログイン認証方式の標準が `caching_sha2_password` に変更された。  
+しかしPHPのMySQL接続モジュールが `caching_sha2_password` に未対応の場合がある。  
+これにより、Docker環境下のMySQLにPHPから `mysqli_connect` で接続しようとすると以下のようなエラーになる。
+
+```
+SQLSTATE[HY000] [2054] The server requested authentication method unknownto the client
+```
+
+このため、MySQLのログイン認証方式を `mysql_native_password` に変更する必要がある。  
+`docker-compose.yml` のMySQLイメージ欄以下の `command` に `--default-authentication-plugin=mysql_native_password` を追加してあげればよい。
