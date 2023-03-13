@@ -32,6 +32,22 @@ RUN apt-get update && docker-php-ext-install mysqli
 ?>
 ```
 
+### MySQL を更新する
+
+- `mysqli_prepare` : 実行するSQLステートメントを準備する。
+  - ステートメントオブジェクトを返す。
+  - エラー時には `false` を返す。
+- `mysqli_stmt_bind_param` : プリペアドステートメントのパラメータに変数をバインドする。
+- `mysqli_stmt_execute` : プリペアドステートメントを実行する。
+
+```
+<?php
+  $stmt = mysqli_prepare($mysqli, 'UPDATE person SET name = ?');
+  mysqli_stmt_bind_param($stmt, 's', 'Taro Tanaka');
+  mysqli_stmt_execute($stmt);
+?>
+```
+
 ## MySQL
 
 ### `my.cnf`
