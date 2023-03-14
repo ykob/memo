@@ -38,6 +38,11 @@ RUN apt-get update && docker-php-ext-install mysqli
   - ステートメントオブジェクトを返す。
   - エラー時には `false` を返す。
 - `mysqli_stmt_bind_param` : プリペアドステートメントのパラメータに変数をバインドする。
+  - 第二引数にはバインドする変数の型を指定する。長さはステートメント中のパラメータ数と一致させる。
+    - `i` : int
+    - `d` : float
+    - `s` : string
+    - `b` : blob
 - `mysqli_stmt_execute` : プリペアドステートメントを実行する。
 
 ```
