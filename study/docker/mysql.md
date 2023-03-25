@@ -1,5 +1,16 @@
 # Docker で PHP + MySQL の環境を構築する
 
+## Commands
+
+### `docker exec`
+
+実行中のコンテナ内で新しいコマンドを実行する。  
+抜ける際には `exit` を実行する。
+
+```
+docker exec -it [container-name] bash
+```
+
 ## PHP
 
 ### Dockerfile
