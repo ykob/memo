@@ -128,7 +128,8 @@ SQLSTATE[HY000] [2054] The server requested authentication method unknownto the 
 
 - `artisan` : Laravel が提供するコマンド
 - `artisan serve` : 開発サーバーを起動する
-- `artisan make:model [ModelName]` : `ModelName` に指定した名前でモデルを新規作成する
+- `artisan make:model {ModelName}` : `ModelName` に指定した名前でモデルを新規作成する
   - `-a`, `--all` : モデルのマイグレーション、シーダー、ファクトリー、フォームリクエスト、ポリシー、コントローラーを新規作成する
   - `-c`, `--controller` : モデルのコントローラーを新規作成する 
   - `-m`, `--migration` : モデルのマイグレーションファイルを新規作成する
+- `artisan make:migration {MigrationFileName}` : `MigrationFileName` に指定した名前でマイグレーションファイルを新規作成する
