@@ -20,3 +20,24 @@
 
 - [DesignSystems.com](https://www.designsystems.com/)
 - [Design Systems. A curated collection of design systems… | by Rich | Design + Sketch | Medium](https://medium.com/sketch-app-sources/design-systems-b258f889754e)
+
+## Foundations
+
+### Color
+
+#### Color Roles
+
+| Role | Gestalt |
+| --- | --- |
+| Primary | Primary |
+| Secondary | Secondary |
+| Tertiary | Accent gray |
+| Background | Background |
+| Foreground | Text |
+| Information | Info |
+| Success | Success |
+| Warning | Warning |
+| Danger | Error |
+| Accent | Recommendation |
+| Gray | Neutral |
+| Unique | Shopping |
