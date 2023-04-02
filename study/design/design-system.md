@@ -25,19 +25,17 @@
 
 ### Color
 
-#### Color Roles
-
-| Role | Gestalt |
-| --- | --- |
-| Primary | Primary |
-| Secondary | Secondary |
-| Tertiary | Accent gray |
-| Background | Background |
-| Foreground | Text |
-| Information | Info |
-| Success | Success |
-| Warning | Warning |
-| Danger | Error |
-| Accent | Recommendation |
-| Gray | Neutral |
-| Unique | Shopping |
+| Role | Gestalt | Primer |
+| --- | --- | --- |
+| Primary | Primary | - |
+| Secondary | Secondary | - |
+| Tertiary | Accent gray | - |
+| Background | Background | Background |
+| Foreground | Text | Foreground |
+| Information | Info | - |
+| Success | Success | Success |
+| Warning | Warning | Attention |
+| Danger | Error | Danger |
+| Accent | Recommendation | Accent |
+| Gray | Neutral | - |
+| Other | Shopping | Open, Close, Done, Severe |
