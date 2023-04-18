@@ -50,7 +50,7 @@ CloudFront のコンソールからディストリビューションを作成す
 
 ### 3. Basic認証を設定するための CloudFront Functions を作成する
 
-CloudFront Functions のコンソールから関数を作成する。
+CloudFront の左メニューから「関数」を選択し、関数を作成する。
 
 - 関数名: 任意の名前
 - ランタイム: Node.js 18.x
@@ -76,3 +76,9 @@ function handler(event) {
   return request;
 }
 ```
+
+### 4. CloudFront に作成した CloudFront Functions を紐付ける
+
+1. ディストリビューションを選択する。
+2. ビヘイビアタブ > 関数を紐付けたいビヘイビアを選択 > 編集
+3. 「関数の関連付け」の「ビューワーリクエスト」に作成した関数を追加する。
