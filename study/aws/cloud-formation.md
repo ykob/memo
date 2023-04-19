@@ -28,3 +28,33 @@ CloudFormation では、テンプレートを以下のセクションに分け�
 | Transform | 任意 | テンプレートの内容を変換する |
 | Resources | 必須 | EC2インスタンス、S3バケットなどのスタックリソースとそのプロパティ |
 | Outputs | 任意 | スタックのプロパティを確認すると返される値 |
+
+## AWSTemplateFormatVersion
+
+テンプレートが準拠している AWS CloudFormation テンプレートバージョンを記述する。  
+最新のテンプレートの形式バージョンは 2010-09-09 であり、現時点で唯一の有効な値となる。  
+値を指定しない場合、AWS CloudFormation は最新のテンプレートの形式バージョンを使用する。
+
+```yaml
+AWSTemplateFormatVersion: "2010-09-09"
+```
+
+## Description
+
+テンプレートの説明を記述する。
+
+```yaml
+Description: "AWS CloudFormation Sample Template"
+```
+
+## Metadata
+
+テンプレートに関する追加情報を提供するオブジェクトを記述する。
+
+```yaml
+Metadata:
+  Instances:
+    Description: "Information about the instances"
+  Databases: 
+    Description: "Information about the databases"
+```
