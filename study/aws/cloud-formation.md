@@ -55,6 +55,35 @@ Description: "AWS CloudFormation Sample Template"
 Metadata:
   Instances:
     Description: "Information about the instances"
-  Databases: 
+  Databases:
     Description: "Information about the databases"
+```
+
+## Parameters
+
+パラメータを使用することで、スタックを作成するまたは更新するたびにテンプレートに値を渡すことができる。
+
+```yaml
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
+```
+
+### テンプレート内でのパラメータの参照
+
+パラメータを参照するには、パラメータの名前を `!Ref` 関数で囲む。  
+同じテンプレートの Resources および Outputs セクションのパラメータを参照できる。
+
+```yaml
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceTypeParameter
 ```
