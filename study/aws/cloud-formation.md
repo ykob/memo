@@ -14,6 +14,8 @@ CloudFormation を使用すると、インフラの構成をコードで表現�
 
 ## テンプレートセクション
 
+- [テンプレートの構造分析 - AWS CloudFormation](https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+
 CloudFormation では、テンプレートを以下のセクションに分けて記述する。
 
 | セクション               | 必須/任意 | 説明                                                                 |
@@ -89,8 +91,6 @@ Resources:
 ```
 
 ## Rules
-
-- [[Rules] (ルール) - AWS CloudFormation](https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/rules-section-structure.html)
 
 スタックを作成するとき、更新するときにテンプレートに渡されるパラメータ、またはパラメータの組み合わせを検証する。  
 テンプレートルールを使用するには、テンプレートに Rules セクションを追加し、そのセクションにアサーションを記述する。
