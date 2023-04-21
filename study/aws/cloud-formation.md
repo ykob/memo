@@ -87,3 +87,37 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceTypeParameter
 ```
+
+## Rules
+
+- [[Rules] (ルール) - AWS CloudFormation](https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/rules-section-structure.html)
+
+スタックを作成するとき、更新するときにテンプレートに渡されるパラメータ、またはパラメータの組み合わせを検証する。  
+テンプレートルールを使用するには、テンプレートに Rules セクションを追加し、そのセクションにアサーションを記述する。
+
+各テンプレートルールは2つのプロパティで構成されている。
+
+- RuleCondition: ルールの条件を記述する。ルールの条件は、テンプレートのパラメータとその値に基づいている。
+- Assertions: ルールの条件が満たされているかどうかを検証するアサーションを記述する。
+
+それぞれのルールに定義できる条件は1つだけである。
+
+```yaml
+Rules:
+  Rule01:
+    RuleCondition:
+      rule-specific intrinsic function: Value01
+    Assertions:
+      - Assert:
+          rule-specific intrinsic function: Value02
+        AssertDescription: Information about this assert
+      - Assert:
+          rule-specific intrinsic function: Value03
+        AssertDescription: Information about this assert
+  Rule02:
+    Assertions:
+      - Assert:
+          rule-specific intrinsic function: Value04
+        AssertDescription: Information about this assert
+```
+
