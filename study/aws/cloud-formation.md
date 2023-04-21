@@ -95,12 +95,12 @@ Resources:
 スタックを作成するとき、更新するときにテンプレートに渡されるパラメータ、またはパラメータの組み合わせを検証する。  
 テンプレートルールを使用するには、テンプレートに Rules セクションを追加し、そのセクションにアサーションを記述する。
 
-各テンプレートルールは2つのプロパティで構成されている。
+各テンプレートルールは 2 つのプロパティで構成されている。
 
 - RuleCondition: ルールの条件を記述する。ルールの条件は、テンプレートのパラメータとその値に基づいている。
 - Assertions: ルールの条件が満たされているかどうかを検証するアサーションを記述する。
 
-それぞれのルールに定義できる条件は1つだけである。
+それぞれのルールに定義できる条件は 1 つだけである。
 
 ```yaml
 Rules:
@@ -121,3 +121,83 @@ Rules:
         AssertDescription: Information about this assert
 ```
 
+## Mappings
+
+Mappings セクションは、キーと関連する値のマッピングで、条件パラメータ値の指定に使用する。
+
+```yaml
+Mappings:
+  RegionMap:
+    us-east-1:
+      "HVM64": "ami-0ff8a91507f77f867"
+    us-west-1:
+      "HVM64": "ami-0bdb828fd58c52235"
+    eu-west-1:
+      "HVM64": "ami-047bb4163c506cd98"
+    ap-southeast-1:
+      "HVM64": "ami-08569b978cc4dfa10"
+    ap-northeast-1:
+      "HVM64": "ami-06cd52961ce9f0d85"
+```
+
+### マッピングから値を返す
+
+`Fn::FindInMap` 関数を使用して、マッピングから値を返すことができる。  
+以下の例では Amazon EC2 インスタンスリソースの `ImageId` プロパティの値を `FindInMap` 関数で指定している。
+
+```yaml
+AWSTemplateFormatVersion: "2010-09-09"
+Mappings:
+  RegionMap:
+    us-east-1:
+      HVM64: ami-0ff8a91507f77f867
+      HVMG2: ami-0a584ac55a7631c0c
+    us-west-1:
+      HVM64: ami-0bdb828fd58c52235
+      HVMG2: ami-066ee5fd4a9ef77f1
+    eu-west-1:
+      HVM64: ami-047bb4163c506cd98
+      HVMG2: ami-0a7c483d527806435
+    ap-northeast-1:
+      HVM64: ami-06cd52961ce9f0d85
+      HVMG2: ami-053cdd503598e4a9d
+    ap-southeast-1:
+      HVM64: ami-08569b978cc4dfa10
+      HVMG2: ami-0be9df32ae9f92309
+Resources:
+  myEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", HVM64]
+      InstanceType: m1.small
+```
+
+マップ内の特定の値を参照するために入力パラメータを使用することもできる。  
+以下の例では、`EnvironmentType` パラメータの値を使用して、`RegionAndInstanceTypeToAMIID` マップ内の特定の値を参照している。
+
+```yaml
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters: 
+  EnvironmentType: 
+    Description: The environment type
+    Type: String
+    Default: test
+    AllowedValues: 
+      - prod
+      - test
+    ConstraintDescription: must be a prod or test
+Mappings: 
+  RegionAndInstanceTypeToAMIID: 
+    us-east-1: 
+      test: "ami-8ff710e2"
+      prod: "ami-f5f41398"
+    us-west-2: 
+      test: "ami-eff1028f"
+      prod: "ami-d0f506b0"
+Resources:
+  ...other resources...
+Outputs: 
+  TestOutput: 
+    Description: Return the name of the AMI ID that matches the region and environment type keys
+    Value: !FindInMap [RegionAndInstanceTypeToAMIID, !Ref "AWS::Region", !Ref EnvironmentType]
+```
