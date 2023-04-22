@@ -206,3 +206,31 @@ Outputs:
       ]
 ```
 
+## Conditions
+
+条件を作成し、それをリソースや出力に関連付けることで、条件が true の場合にのみリソースや出力を作成するようにできる。
+
+以下の例では、CreateProdResources という条件は EnvType パラメータが prod の場合に true になる。
+
+```yaml
+Conditions:
+  CreateProdResources: !Equals
+    - !Ref EnvType
+    - prod
+```
+
+以下の例では、CreateBucketPolicy という条件は別の条件である IsProduction と CreateBucket を参照しており、両方が true の場合に true になる。
+
+```yaml
+Conditions:
+  IsProduction: !Equals
+    - !Ref EnvType
+    - prod
+  CreateBucket: !Not
+    - !Equals
+      - !Ref BucketName
+      - ""
+  CreateBucketPolicy: !And
+    - !Condition IsProduction
+    - !Condition CreateBucket
+```
