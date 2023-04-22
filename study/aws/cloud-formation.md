@@ -177,27 +177,32 @@ Resources:
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
-Parameters: 
-  EnvironmentType: 
+Parameters:
+  EnvironmentType:
     Description: The environment type
     Type: String
     Default: test
-    AllowedValues: 
+    AllowedValues:
       - prod
       - test
     ConstraintDescription: must be a prod or test
-Mappings: 
-  RegionAndInstanceTypeToAMIID: 
-    us-east-1: 
+Mappings:
+  RegionAndInstanceTypeToAMIID:
+    us-east-1:
       test: "ami-8ff710e2"
       prod: "ami-f5f41398"
-    us-west-2: 
+    us-west-2:
       test: "ami-eff1028f"
       prod: "ami-d0f506b0"
-Resources:
-  ...other resources...
-Outputs: 
-  TestOutput: 
+Resources: ...other resources...
+Outputs:
+  TestOutput:
     Description: Return the name of the AMI ID that matches the region and environment type keys
-    Value: !FindInMap [RegionAndInstanceTypeToAMIID, !Ref "AWS::Region", !Ref EnvironmentType]
+    Value:
+      !FindInMap [
+        RegionAndInstanceTypeToAMIID,
+        !Ref "AWS::Region",
+        !Ref EnvironmentType,
+      ]
 ```
+
