@@ -234,3 +234,30 @@ Conditions:
     - !Condition IsProduction
     - !Condition CreateBucket
 ```
+
+## Transform
+
+AWS CloudFormation がテンプレートを処理するために使用するマクロを 1 つ以上指定する。  
+マクロは、テンプレートの構文を拡張するために使用される。
+
+以下の例では、​​AWS CloudFormation が MyMacro を評価し、その後 AWS::Serverless を評価する。  
+どちらも Transform セクションに含まれているため、テンプレート全体のコンテンツを処理できる。
+
+```yaml
+Transform:
+  - MyMacro
+  - 'AWS::Serverless'
+Resources:
+  WaitCondition:
+    Type: 'AWS::CloudFormation::WaitCondition'
+  MyBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+        BucketName: MyBucket
+        Tags: [{"key":"value"}]
+        CorsConfiguration:[]
+  MyEc2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+        ImageID: "ami-123"
+```
