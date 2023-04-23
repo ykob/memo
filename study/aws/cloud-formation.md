@@ -261,3 +261,19 @@ Resources:
     Properties:
         ImageID: "ami-123"
 ```
+
+## Resources
+
+スタックに含める EC2 インスタンス、S3 バケットなどの AWS リソースとそのプロパティを宣言する。
+
+```yaml
+Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: "ami-0ff8a91507f77f867"
+      InstanceType: "t2.micro"
+```
+
+プロパティを宣言する必要のないリソースは、プロパティを省略できる。
+Conditions に定義した条件と関連付けることによって、その条件に従ってリソースを作成できる。
