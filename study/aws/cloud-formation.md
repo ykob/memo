@@ -31,7 +31,7 @@ CloudFormation では、テンプレートを以下のセクションに分け�
 | Resources                | 必須      | EC2 インスタンス、S3 バケットなどのスタックリソースとそのプロパティ  |
 | Outputs                  | 任意      | スタックのプロパティを確認すると返される値                           |
 
-## AWSTemplateFormatVersion
+### AWSTemplateFormatVersion
 
 テンプレートが準拠している AWS CloudFormation テンプレートバージョンを記述する。  
 最新のテンプレートの形式バージョンは 2010-09-09 であり、現時点で唯一の有効な値となる。  
@@ -41,7 +41,7 @@ CloudFormation では、テンプレートを以下のセクションに分け�
 AWSTemplateFormatVersion: "2010-09-09"
 ```
 
-## Description
+### Description
 
 テンプレートの説明を記述する。
 
@@ -49,7 +49,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "AWS CloudFormation Sample Template"
 ```
 
-## Metadata
+### Metadata
 
 テンプレートに関する追加情報を提供するオブジェクトを記述する。
 
@@ -61,7 +61,7 @@ Metadata:
     Description: "Information about the databases"
 ```
 
-## Parameters
+### Parameters
 
 パラメータを使用することで、スタックを作成するまたは更新するたびにテンプレートに値を渡すことができる。
 
@@ -77,7 +77,7 @@ Parameters:
     Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
 ```
 
-### テンプレート内でのパラメータの参照
+#### テンプレート内でのパラメータの参照
 
 パラメータを参照するには、パラメータの名前を `!Ref` 関数で囲む。  
 同じテンプレートの Resources および Outputs セクションのパラメータを参照できる。
@@ -90,7 +90,7 @@ Resources:
       InstanceType: !Ref InstanceTypeParameter
 ```
 
-## Rules
+### Rules
 
 スタックを作成するとき、更新するときにテンプレートに渡されるパラメータ、またはパラメータの組み合わせを検証する。  
 テンプレートルールを使用するには、テンプレートに Rules セクションを追加し、そのセクションにアサーションを記述する。
@@ -121,7 +121,7 @@ Rules:
         AssertDescription: Information about this assert
 ```
 
-## Mappings
+### Mappings
 
 Mappings セクションは、キーと関連する値のマッピングで、条件パラメータ値の指定に使用する。
 
@@ -140,7 +140,7 @@ Mappings:
       "HVM64": "ami-06cd52961ce9f0d85"
 ```
 
-### マッピングから値を返す
+#### マッピングから値を返す
 
 `Fn::FindInMap` 関数を使用して、マッピングから値を返すことができる。  
 以下の例では Amazon EC2 インスタンスリソースの `ImageId` プロパティの値を `FindInMap` 関数で指定している。
@@ -206,7 +206,7 @@ Outputs:
       ]
 ```
 
-## Conditions
+### Conditions
 
 条件を作成し、それをリソースや出力に関連付けることで、条件が true の場合にのみリソースや出力を作成するようにできる。
 
@@ -235,7 +235,7 @@ Conditions:
     - !Condition CreateBucket
 ```
 
-## Transform
+### Transform
 
 AWS CloudFormation がテンプレートを処理するために使用するマクロを 1 つ以上指定する。  
 マクロは、テンプレートの構文を拡張するために使用される。
@@ -262,7 +262,7 @@ Resources:
         ImageID: "ami-123"
 ```
 
-## Resources
+### Resources
 
 スタックに含める EC2 インスタンス、S3 バケットなどの AWS リソースとそのプロパティを宣言する。
 
