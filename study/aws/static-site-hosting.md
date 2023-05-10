@@ -50,11 +50,22 @@ CloudFront のコンソールからディストリビューションを作成す
 
 ### 3. Basic 認証を設定するための CloudFront Functions を作成する
 
+#### Basic 認証に使う ID と Password を定義する。
+
+CloudShell で以下のコマンドを実行したら、出力された文字列をコピーする。
+
+```sh
+echo -n 'ID:Password' | base64
+```
+
+#### CloudFront Functions を作成する
+
 CloudFront の左メニューから「関数」を選択し、関数を作成する。
 
 - 関数名: 任意の名前
 - ランタイム: Node.js 18.x
 - ソースコード: 以下のコードをコピペする
+  - `authString` には先ほどコピーした文字列を貼り付ける
 
 ```js
 function handler(event) {
