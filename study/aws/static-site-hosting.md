@@ -3,7 +3,7 @@
 ## 要件
 
 - vite で build した静的サイトのファイル一式をデプロイする
-- Basic認証を使ってアクセスを制限する
+- Basic 認証を使ってアクセスを制限する
 
 ## 使用するサービス
 
@@ -24,7 +24,7 @@ S3 にアップロードしたファイルを配信するための CDN サービ
 
 1. S3 に静的サイトをホスティングするためのバケットを作成する
 2. CloudFront に配信するためのディストリビューションを作成する
-3. Basic認証を設定するための CloudFront Functions を作成する
+3. Basic 認証を設定するための CloudFront Functions を作成する
 4. CloudFront に作成した CloudFront Functions を紐付ける
 
 ### 1. S3 に静的サイトをホスティングするためのバケットを作成する
@@ -33,7 +33,7 @@ S3 のコンソールからバケットを作成する。
 
 - バケット名: 任意の名前
 - リージョン: `ap-northeast-1`
-- オブジェクト所有者: ACL無効
+- オブジェクト所有者: ACL 無効
 - ブロックパブリックアクセス: パブリックアクセスをすべてブロック
 - バージョニング: 有効にする
 - デフォルトの暗号化: 任意
@@ -48,7 +48,7 @@ CloudFront のコンソールからディストリビューションを作成す
 2. 一般タブ > 設定 > 編集を選択する。
 3. 「デフォルトルートオブジェクト - オプション」に `index.html` を指定する。
 
-### 3. Basic認証を設定するための CloudFront Functions を作成する
+### 3. Basic 認証を設定するための CloudFront Functions を作成する
 
 CloudFront の左メニューから「関数」を選択し、関数を作成する。
 
@@ -69,10 +69,10 @@ function handler(event) {
     return {
       statusCode: 401,
       statusDescription: "Unauthorized",
-      headers: { "www-authenticate": { value: "Basic" } }
+      headers: { "www-authenticate": { value: "Basic" } },
     };
   }
-  
+
   return request;
 }
 ```
