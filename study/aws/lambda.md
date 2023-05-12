@@ -16,4 +16,5 @@
 
 ## 参考リンク
 
+- [AWS Lambda とは - AWS Lambda](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/welcome.html)
 - [AWSのスペシャリストが勧める　Lambdaではじめるサーバーレス環境 - ログミーTech](https://logmi.jp/tech/articles/323080)
