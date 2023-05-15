@@ -29,4 +29,4 @@ Lambda の関数の中でも AWS のその他のサービスや外部の API を
 ## 参考リンク
 
 - [AWS Lambda とは - AWS Lambda](https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/welcome.html)
-- [AWSのスペシャリストが勧める　Lambdaではじめるサーバーレス環境 - ログミーTech](https://logmi.jp/tech/articles/323080)
+- [AWS のスペシャリストが勧める Lambda ではじめるサーバーレス環境 - ログミー Tech](https://logmi.jp/tech/articles/323080)
