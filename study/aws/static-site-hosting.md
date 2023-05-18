@@ -86,7 +86,10 @@ function handler(event) {
 
   return request;
 }
+
 ```
+
+- 発行タブ > 発行ボタンを押下して関数を発行する。
 
 ### 4. CloudFront に作成した CloudFront Functions を紐付ける
 
