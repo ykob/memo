@@ -74,4 +74,15 @@ WCAG にはレベル A、AA、AAA の 3 つの適合レベルがある。
 
 HTML には元々定義されているセマンティクスがある。（ネイティブセマンティスクス）
 HTML の要素を適切に使用することでセマンティクスを実装できるが、不足がある。（例：タブ UI など）
-これらのセマンティクスを補完するのが WAIA-ARIA という仕様。
+これらのセマンティクスを補完するのが WAI-ARIA という仕様。
+
+WAI-ARIAを用いてタブUIを表現しようとすると、以下のようになる。
+
+```html
+<div role="tablist">
+  <button role="tab" aria-selected="true" id="example-tab1">タブ1</button>
+  <button role="tab" aria-selected="false" id="example-tab2">タブ2</button>
+</div>
+<div role="tabpanel" aria-labelledby="example-tab1" aria-hidden="false"> ... </div>
+<div role="tabpanel" aria-labelledby="example-tab2" aria-hidden="true"> ... </div>
+```
