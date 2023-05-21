@@ -86,3 +86,8 @@ WAI-ARIAを用いてタブUIを表現しようとすると、以下のように�
 <div role="tabpanel" aria-labelledby="example-tab1" aria-hidden="false"> ... </div>
 <div role="tabpanel" aria-labelledby="example-tab2" aria-hidden="true"> ... </div>
 ```
+
+- `role` ：オブジェクトの役割。代入された値によって支援技術はユーザーに適切な操作を提示したり、サポートしたりできる。
+- `aria-selected` ：`boolean` 型。`true` ならその要素が選択されていることを示す。
+- `aria-labelledby` ：`id` 型。`id` 属性の値を持つ要素が、その要素のラベルであることを示す。
+- `aria-hidden` ：`boolean` 型。`true` ならその要素が隠されていることを示す。
