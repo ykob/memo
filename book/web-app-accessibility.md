@@ -76,18 +76,24 @@ HTML には元々定義されているセマンティクスがある。（ネイ
 HTML の要素を適切に使用することでセマンティクスを実装できるが、不足がある。（例：タブ UI など）
 これらのセマンティクスを補完するのが WAI-ARIA という仕様。
 
-WAI-ARIAを用いてタブUIを表現しようとすると、以下のようになる。
+WAI-ARIA を用いてタブ UI を表現しようとすると、以下のようになる。
 
 ```html
 <div role="tablist">
   <button role="tab" aria-selected="true" id="example-tab1">タブ1</button>
   <button role="tab" aria-selected="false" id="example-tab2">タブ2</button>
 </div>
-<div role="tabpanel" aria-labelledby="example-tab1" aria-hidden="false"> ... </div>
-<div role="tabpanel" aria-labelledby="example-tab2" aria-hidden="true"> ... </div>
+<div role="tabpanel" aria-labelledby="example-tab1" aria-hidden="false">
+  ...
+</div>
+<div role="tabpanel" aria-labelledby="example-tab2" aria-hidden="true">...</div>
 ```
 
 - `role` ：オブジェクトの役割。代入された値によって支援技術はユーザーに適切な操作を提示したり、サポートしたりできる。
 - `aria-selected` ：`boolean` 型。`true` ならその要素が選択されていることを示す。
 - `aria-labelledby` ：`id` 型。`id` 属性の値を持つ要素が、その要素のラベルであることを示す。
 - `aria-hidden` ：`boolean` 型。`true` ならその要素が隠されていることを示す。
+
+「読み上げられないし、操作できないボタン」や「選択したかわからないチェックボックス」を WAI-ARIA で補完することもできるが、できるだけネイティブセマンティクスを使うべき。  
+WAI-ARIA はあくまでも HTML のセマンティクスのみを補完するものであり、振る舞いまでは再現してくれないため。
+
