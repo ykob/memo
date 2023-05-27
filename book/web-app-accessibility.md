@@ -173,3 +173,29 @@ CSS で `outline: none;` を指定するなどしてフォーカスのスタイ�
 - 代替テキストがない`img`要素、`svg`要素
 - アクセシブルな名前がない`button`要素、`a`要素、`input`要素
 - 装飾のための要素に`title`要素が設定されている
+
+以下は改善策の例
+
+- `img`要素に`alt`属性、`svg`要素に`title`要素や`aria-label`属性を用いる
+- ユーザーが画像をアップロードできる場合は、画像の説明を入力するためのテキストフィールドを用意する
+- グラフやチャートに対して代替となるコンテンツ（グラフのもとになるテーブルなど）を提供する
+
+### Visually Hidden
+
+AOM に影響のないプロパティのみを用いて、視覚的には表示されないがマシンリーダビリティは確保するテクニック。  
+`display: none;`や`visibility: hidden;`を用いると、AOM にも影響が出てしまうため、使用できない。
+
+```css
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+```
+
