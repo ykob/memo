@@ -218,3 +218,40 @@ AOM に影響のないプロパティのみを用いて、視覚的には表示�
 ```
 
 ## 第 3 章 フォームの改善
+
+- `placeholder` 属性をラベルの代わりに使用しない。
+- ラベルと説明はまとめて `label` 要素でマークアップする。
+- `label` 要素が使用できない場合は `aria-labelledby` 属性と `aria-describedby` 属性を使用する。
+
+```html
+<span id="username">名前</span>
+<span id="description">説明</span>
+<input type="text" aria-labelledby="username" aria-describedby="description" />
+```
+
+- `title` 属性や `aria-label` 属性を使用して不可視のラベルを付ける。
+  - 使用はラベルがなくても入力すべき値が明らかな場合に限定すべき。
+- `fieldset` 要素と `legend` 要素を使用してグループ化する。
+  - `legend` 要素は `fieldset` 要素の最初の子要素として配置する。
+
+```html
+<fieldset>
+  <legend>グループ名</legend>
+  <label><input type="radio" name="group" /> 選択肢 1</label>
+  <label><input type="radio" name="group" /> 選択肢 2</label>
+  <label><input type="radio" name="group" /> 選択肢 3</label>
+</fieldset>
+```
+
+- `role="group"` 属性を使用してグループ化する。
+
+```html
+<div id="group-name">グループ名</div>
+<div role="group" aria-labelledby="group-name">
+  <label><input type="radio" name="group" /> 選択肢 1</label>
+  <label><input type="radio" name="group" /> 選択肢 2</label>
+  <label><input type="radio" name="group" /> 選択肢 3</label>
+</div>
+```
+
+- 入力必須項目には `required` 属性や `aria-required="true"` 属性を使用する。
