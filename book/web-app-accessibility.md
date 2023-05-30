@@ -219,6 +219,8 @@ AOM に影響のないプロパティのみを用いて、視覚的には表示�
 
 ## 第 3 章 フォームの改善
 
+### ラベルと説明
+
 - `placeholder` 属性をラベルの代わりに使用しない。
 - ラベルと説明はまとめて `label` 要素でマークアップする。
 - `label` 要素が使用できない場合は `aria-labelledby` 属性と `aria-describedby` 属性を使用する。
@@ -255,3 +257,42 @@ AOM に影響のないプロパティのみを用いて、視覚的には表示�
 ```
 
 - 入力必須項目には `required` 属性や `aria-required="true"` 属性を使用する。
+
+### 入力の支援
+
+入力の支援として大きく 3 つの方法が挙げられる。
+
+1. 入力を減らす。必要性の薄いフォームコントロールを削減する。
+2. 入力を自動補完する。
+3. 入力しやすいフォームコントロールを設ける。
+
+`autocomplete` 属性を使用することで、ブラウザの自動補完をサポートしやすくなる。  
+`autocomplete` 属性には `name`, `email`, `url` などの期待される入力補完に応じた値を指定することができる。  
+入力できる値は [HTML Living Standard](https://momdo.github.io/html/form-control-infrastructure.html#autofilling-form-controls:-the-autocomplete-attribute) に記載されている。
+`autocomplete` 属性とともに `name` 属性にも適切な値を設定する必要がある。
+
+```html
+<form>
+  <label>
+    クレジットカード名義
+    <input type="text" name="ccname" autocomplete="cc-name" />
+  </label>
+    <label>
+    クレジットカード番号
+    <input type="text" name="cardnumber" autocomplete="cc-number" />
+  </label>
+  <label>
+    CVC
+    <input type="text" name="cvc" autocomplete="cc-csc" />
+  </label>
+</form>
+```
+
+`input` 要素の `type` 属性には、入力値に応じた適切な値を指定する。  
+それによってもたらせるメリットには以下のようなものがある。
+
+- フォームコントロールがより入力しやすいUIに変化する。
+- キーボードや支援技術による操作がサポートされる。
+- モバイルデバイスでの入力時に適切なソフトウェアキーボードが選択される。
+
+ソフトウェアキーボードの種類を指定するには、 `inputmode` 属性と `pattern` 属性を使う方法もある。
