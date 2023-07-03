@@ -7,4 +7,3 @@
 - [SCRUM BOOT CAMP THE BOOK - スクラムチームではじめるアジャイル開発](https://www.shoeisha.co.jp/book/detail/9784798167282)
 
 ## 用語
-
