@@ -2,9 +2,13 @@
 
 ## 参考図書
 
-- [スクラムガイド](https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Japanese.pdf)
 - [アジャイルサムライ - 達人開発者への道](https://shop.ohmsha.co.jp/shopdetail/000000001901/)
 - [SCRUM BOOT CAMP THE BOOK - スクラムチームではじめるアジャイル開発](https://www.shoeisha.co.jp/book/detail/9784798167282)
+
+## 参考リンク
+
+- [スクラムガイド](https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-Japanese.pdf)
+- [アジャイルソフトウェア開発宣言](https://agilemanifesto.org/iso/ja/manifesto.html)
 
 ## 用語
 
@@ -16,7 +20,14 @@
   - フィードバックを継続的に得ながら、改善を繰り返す
 - 単一の開発手法を指すものではなく、価値観と行動原則に名前がついたもの
 
-- [アジャイルソフトウェア開発宣言](https://agilemanifesto.org/iso/ja/manifesto.html)
-
 ### スクラム
 
+- アジャイル開発手法の一つ
+  - 要求を明確化し、優先順位をつけて、その順に機能の実装を行う
+  - 固定の短い時間（タイムボックス）に区切って作業を進める
+  - 現在の状況と問題点を可視化し、定期的に確認する
+  - もっとよいやり方があれば、すぐに取り入れる
+
+### タイムボックス
+
+固定の短い時間のこと。
