@@ -317,3 +317,27 @@ AOM に影響のないプロパティのみを用いて、視覚的には表示�
 </label>
 <div id="email-error">メールアドレスを入力してください。</div>
 ```
+
+グループにも同様の方法でエラーメッセージを関連付けることができる。
+
+```html
+<fieldset>
+  <legend>
+    <span>グループ名</span>
+    <span>エラー：項目が選択されていません。</span>
+  </legend>
+  <label><input type="radio" name="group" /> 選択肢 1</label>
+  <label><input type="radio" name="group" /> 選択肢 2</label>
+  <label><input type="radio" name="group" /> 選択肢 3</label>
+</fieldset>
+```
+
+```html
+<div id="group-name">グループ名</div>
+<div id="group-error">エラー：項目が選択されていません。</div>
+<div role="group" aria-labelledby="group-name" aria-describedby="group-error">
+  <label><input type="radio" name="group" /> 選択肢 1</label>
+  <label><input type="radio" name="group" /> 選択肢 2</label>
+  <label><input type="radio" name="group" /> 選択肢 3</label>
+</div>
+```
