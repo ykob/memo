@@ -341,3 +341,10 @@ AOM に影響のないプロパティのみを用いて、視覚的には表示�
   <label><input type="radio" name="group" /> 選択肢 3</label>
 </div>
 ```
+
+`aria-live` 属性を使用することで、エラーメッセージを動的に変更したときに、エラーメッセージをスクリーンリーダーで読み上げることができる。
+
+```html
+<span area-live="assertive">エラーメッセージ</span>
+```
+
