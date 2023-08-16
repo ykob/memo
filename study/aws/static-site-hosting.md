@@ -95,3 +95,114 @@ function handler(event) {
 1. ディストリビューションを選択する。
 2. ビヘイビアタブ > 関数を紐付けたいビヘイビアを選択 > 編集
 3. 「関数の関連付け」の「ビューワーリクエスト」に作成した関数を追加する。
+
+## Cloud Formation
+
+```yaml
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Statically host a website with S3 and CloudFront."
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: "The domain name of the website."
+  BasicAuth:
+    Type: String
+    Description: "The basic auth string."
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref DomainName
+      AccessControl: Private
+      VersioningConfiguration:
+        Status: Suspended
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: !Ref DomainName
+        DefaultRootObject: index.html
+        Origins:
+          - DomainName: !GetAtt S3Bucket.DomainName
+            Id: !Ref DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          CachedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          Compress: true
+          DefaultTTL: 86400
+          ForwardedValues:
+            Cookies:
+              Forward: none
+            QueryString: false
+          MaxTTL: 31536000
+          MinTTL: 0
+          TargetOriginId: !Ref DomainName
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateArn
+          SslSupportMethod: sni-only
+        HttpVersion: http2
+        PriceClass: PriceClass_100
+        Aliases:
+          - !Ref DomainName
+        Restrictions:
+          GeoRestriction:
+            RestrictionType: none
+        WebACLId: !Ref WebACLId
+  CloudFrontFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      AutoPublish: true
+      FunctionCode:
+        Comment: !Ref DomainName
+        Handler: index.handler
+        Runtime: cloudfront-js-1.0
+        Code:
+          ZipFile: |
+            function handler(event) {
+              var request = event.request;
+              var headers = request.headers;
+              var authString = !Ref BasicAuth;
+
+              if (
+                typeof headers.authorization === "undefined" ||
+                headers.authorization.value !== authString
+              ) {
+                return {
+                  statusCode: 401,
+                  statusDescription: "Unauthorized",
+                  headers: { "www-authenticate": { value: "Basic" } },
+                };
+              }
+
+              return request;
+            }
+      FunctionConfig:
+        Comment: !Ref DomainName
+        Runtime: cloudfront-js-1.0
+        Name: !Ref DomainName
+Outputs:
+  S3BucketName:
+    Description: "The name of the S3 bucket."
+    Value: !Ref S3Bucket
+  CloudFrontDistributionId:
+    Description: "The ID of the CloudFront distribution."
+    Value: !Ref CloudFrontDistribution
+  CloudFrontDistributionDomainName:
+    Description: "The domain name of the CloudFront distribution."
+    Value: !GetAtt CloudFrontDistribution.DomainName
+```
