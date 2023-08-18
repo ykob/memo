@@ -28,7 +28,7 @@ The main purpose of Mermaid is to help documentation catch up with development.
 
 | 記号名 | 記法 |
 | :--- | :--- |
-| 処理記号 | `string` |
+| 処理記号 | `id[string]` |
 | 手作業記号 | `id[\string/]` |
 | 開始/終了記号 | `id([string])` |
 | 判断記号 | `id{string}` |
@@ -37,8 +37,15 @@ The main purpose of Mermaid is to help documentation catch up with development.
 
 ```mermaid
 flowchart TD
-  A([判定 開始]) -->
-  ZZ([判定 終了])
+  A([判断記号 開始]) -->
+  B{判断記号}
+  B--"true"-->C1
+  B--"false"-->D1
+  C1[処理記号]-->
+  C2[\手作業記号/]-->ZZ
+  D1[処理記号]-->
+  D2[\手作業記号/]-->ZZ
+  ZZ([判断記号 終了])
 ```
 
 ### Sequence Diagrams / シーケンス図
