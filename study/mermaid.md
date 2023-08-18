@@ -24,6 +24,23 @@ The main purpose of Mermaid is to help documentation catch up with development.
 
 - [フローチャート - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AD%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88)
 
+#### 各記号と記法
+
+| 記号名 | 記法 |
+| :--- | :--- |
+| 処理記号 | `string` |
+| 手作業記号 | `id[\string/]` |
+| 開始/終了記号 | `id([string])` |
+| 判断記号 | `id{string}` |
+
+#### 記述例
+
+```mermaid
+flowchart TD
+  A([判定 開始]) -->
+  ZZ([判定 終了])
+```
+
 ### Sequence Diagrams / シーケンス図
 
 > オブジェクト間のメッセージの流れを時系列的に表現する。イベントの発生順序やオブジェクトの生存（ライフライン、lifeline）、メッセージ（message）、イベントオカレンス（event occurrence）、実行オカレンス（execution occurrence）、相互作用オカレンス（interaction occurrence）などの記述によって、もっぱら時系列にもとづいたシステム分析・設計に使用する。
