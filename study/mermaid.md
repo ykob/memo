@@ -54,6 +54,18 @@ flowchart TD
 
 - [シーケンス図 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E5%9B%B3)
 
+#### 各要素と記法
+
+| 要素名 | 用途 | 記法 |
+| :--- | :--- | :--- |
+| ライフライン | 使用するオブジェクトやクラス | `participant ID as Name` |
+| グループ化 |  | `box Message`, `end` |
+| メッセージ | オブジェクト間のやり取り | `ID1->>ID2: Message`, `ID1<<-ID2: Message` |
+| 実行仕様 | ライフライン上で実行されている処理 | `activate ID`, `deactivate ID` |
+| ノート | 補足情報 | `Note left of ID: Message` |
+| 繰り返し処理 |  | `loop Message`, `end` |
+| 条件分岐 |  | `alt Message`, `else Message`, `end` |
+
 ### State Diagrams / 状態遷移図
 
 > 状態遷移図（じょうたいせんいず、State Transition Diagram）は、有限オートマトンなどの状態機械について、その各状態を頂点とし、状態から状態への各遷移を辺としたグラフ構造に注目して、グラフィカルに表現した図である。他の表現手法として状態遷移表などがある。
