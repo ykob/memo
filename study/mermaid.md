@@ -58,13 +58,32 @@ flowchart TD
 
 | 要素名 | 用途 | 記法 |
 | :--- | :--- | :--- |
-| ライフライン | 使用するオブジェクトやクラス | `participant ID as Name` |
+| ライフライン | 使用するオブジェクトやクラス | `participant ID as Name`, `actor ID as Name` |
 | グループ化 |  | `box Message`, `end` |
 | メッセージ | オブジェクト間のやり取り | `ID1->>ID2: Message`, `ID1<<-ID2: Message` |
 | 実行仕様 | ライフライン上で実行されている処理 | `activate ID`, `deactivate ID` |
 | ノート | 補足情報 | `Note left of ID: Message` |
 | 繰り返し処理 |  | `loop Message`, `end` |
 | 条件分岐 |  | `alt Message`, `else Message`, `end` |
+
+```mermaid
+sequenceDiagram
+actor A as User
+box Service
+participant B as Web App
+participant C as Web API
+participant D as DB
+end
+A->>B: ページにランディング
+B->>C: 要素一覧をリクエスト
+activate B
+C->>D: 要素一覧を取得
+D->>C: 要素一覧を返却
+C->>B: 要素一覧を返却
+deactivate B
+B->>B: ページをレンダリング
+B->>A: ページのリソースを返却
+```
 
 ### State Diagrams / 状態遷移図
 
