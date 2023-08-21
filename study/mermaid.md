@@ -65,6 +65,7 @@ flowchart TD
 | ノート | 補足情報 | `Note left of ID: Message` |
 | 繰り返し処理 |  | `loop Message`, `end` |
 | 条件分岐 |  | `alt Message`, `else Message`, `end` |
+| 並行処理 |  | `par Message`, `and Message`, `end` |
 
 ```mermaid
 sequenceDiagram
