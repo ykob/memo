@@ -63,9 +63,11 @@ flowchart TD
 | メッセージ | オブジェクト間のやり取り | `ID1->>ID2: Message`, `ID1<<-ID2: Message` |
 | 実行仕様 | ライフライン上で実行されている処理 | `activate ID`, `deactivate ID` |
 | ノート | 補足情報 | `Note left of ID: Message` |
-| 繰り返し処理 |  | `loop Message`, `end` |
-| 条件分岐 |  | `alt Message`, `else Message`, `end` |
-| 並行処理 |  | `par Message`, `and Message`, `end` |
+| 繰り返し処理 | - | `loop Message`, `end` |
+| 条件分岐 | - | `alt Message`, `else Message`, `end` |
+| 並行処理 | - | `par Message`, `and Message`, `end` |
+| 中断処理 | - | `break Message`, `end` |
+| シーケンス番号 | メッセージに番号をつける | `autonumber` |
 
 ```mermaid
 sequenceDiagram
