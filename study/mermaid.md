@@ -59,7 +59,7 @@ flowchart TD
 | 要素名 | 用途 | 記法 |
 | :--- | :--- | :--- |
 | ライフライン | 使用するオブジェクトやクラス | `participant ID as Name`, `actor ID as Name` |
-| グループ化 |  | `box Message`, `end` |
+| グループ化 | ライフラインを囲みグループ化する | `box Message`, `end` |
 | メッセージ | オブジェクト間のやり取り | `ID1->>ID2: Message`, `ID1<<-ID2: Message` |
 | 実行仕様 | ライフライン上で実行されている処理 | `activate ID`, `deactivate ID` |
 | ノート | 補足情報 | `Note left of ID: Message` |
