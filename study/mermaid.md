@@ -48,6 +48,19 @@ flowchart TD
   ZZ([判断記号 終了])
 ```
 
+```
+flowchart TD
+  A([判断記号 開始]) -->
+  B{判断記号}
+  B--"true"-->C1
+  B--"false"-->D1
+  C1[処理記号]-->
+  C2[\手作業記号/]-->ZZ
+  D1[処理記号]-->
+  D2[\手作業記号/]-->ZZ
+  ZZ([判断記号 終了])
+```
+
 ### Sequence Diagrams / シーケンス図
 
 > オブジェクト間のメッセージの流れを時系列的に表現する。イベントの発生順序やオブジェクトの生存（ライフライン、lifeline）、メッセージ（message）、イベントオカレンス（event occurrence）、実行オカレンス（execution occurrence）、相互作用オカレンス（interaction occurrence）などの記述によって、もっぱら時系列にもとづいたシステム分析・設計に使用する。
@@ -70,6 +83,25 @@ flowchart TD
 | シーケンス番号 | メッセージに番号をつける | `autonumber` |
 
 ```mermaid
+sequenceDiagram
+actor A as User
+box Service
+participant B as Web App
+participant C as Web API
+participant D as DB
+end
+A->>B: ページにランディング
+B->>C: 要素一覧をリクエスト
+activate B
+C->>D: 要素一覧を取得
+D->>C: 要素一覧を返却
+C->>B: 要素一覧を返却
+deactivate B
+B->>B: ページをレンダリング
+B->>A: ページのリソースを返却
+```
+
+```
 sequenceDiagram
 actor A as User
 box Service
