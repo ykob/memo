@@ -8,4 +8,3 @@ https://typegraphql.com/
 
 Node.js 製 GraphQL サーバー構築用フレームワーク。
 Code First.
-
