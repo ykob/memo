@@ -32,6 +32,8 @@ The main purpose of Mermaid is to help documentation catch up with development.
 | 手作業記号 | `id[\string/]` |
 | 開始/終了記号 | `id([string])` |
 | 判断記号 | `id{string}` |
+| 矢印 | `id1-->id2` |
+| 部分グラフ | `subgraph title`, `end` |
 
 #### 記述例
 
