@@ -43,6 +43,10 @@ GraphQL スキーマを定義するための TypeScript ベースのライブラ
 - エクステンションとモジュール: スキーマの拡張やモジュール化をサポートする。
 - リレーションシップのサポート: リレーションシップやインターフェース、ユニオン型などの高度なスキーマ要素もサポートしており、複雑なデータモデリングも可能。
 
+#### チュートリアル
+
+https://nexusjs.org/docs/getting-started/tutorial/
+
 ### Pothos GraphQL
 
 https://pothos-graphql.dev/
