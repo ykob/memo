@@ -56,3 +56,7 @@ REST API、GraphQL、ローカルキャッシュなど、様々なデータソ�
 - オプティミスティックな UI レスポンス: SWR は、リクエストを非同期に行うため、ユーザーの操作に対する迅速な UI レスポンスを提供する。
 - リトライとエラーハンドリング: ネットワークの問題や API エラーに対応するため、SWR は自動的にリトライやエラーハンドリングを行う。リトライの間隔をカスタマイズすることも可能です。
 - インターバルリフェッチ: SWR は、指定したインターバルでデータの再取得を行うこともサポートしており、定期的なデータ更新が必要な場合に便利です。
+
+### 参考リンク
+
+- [Comparison | React Query vs SWR vs Apollo vs RTK Query vs React Router | TanStack Query Docs](https://tanstack.com/query/latest/docs/react/comparison?from=reactQueryV3&original=https%3A%2F%2Ftanstack.com%2Fquery%2Fv3%2Fdocs%2Fcomparison)
