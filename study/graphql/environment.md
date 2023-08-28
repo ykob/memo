@@ -20,11 +20,32 @@ GraphQL サーバーを構築するためのフルスタックなライブラリ
 https://typegraphql.com/
 
 TypeGraphQL は、TypeScript を使用して GraphQL API を定義するためのライブラリ。  
-スキーマファーストとコードファーストのアプローチの両方をサポートしている。
+Schema-First と Code-First のアプローチの両方をサポートしている。
 
 - クラスとデコレータ: TypeGraphQL は、クラスとデコレータを使用して、クライアントからのクエリやミューテーションのための GraphQL スキーマを定義する。
 - リゾルバ関数の自動生成: TypeGraphQL は、デコレータを使用してリゾルバ関数を自動的に生成し、スキーマとリゾルバの同一性を保つことができる。
-- コードファーストとスキーマファーストの両方: TypeGraphQL は、コードファーストとスキーマファーストのハイブリッドなアプローチを提供し、フレキシブルな API 定義を実現する。
+- Code-First と Schema-First の両方: TypeGraphQL は、Code-First と Schema-First のハイブリッドなアプローチを提供し、フレキシブルな API 定義を実現する。
+
+2023/8/28 時点での最新版は v1.1.1（2020/11/5 リリース）となっている。  
+また、v1.2.0-rc.1 が 2021/10/6、2.0.0-beta.3 が 2023/8/18 にそれぞれプレリリースされている。
+
+### GraphQL Nexus
+
+https://nexusjs.org/
+
+GraphQL スキーマを定義するための TypeScript ベースのライブラリ。  
+スキーマの Code-First 定義を強化し、柔軟性と型安全性を提供する。
+
+- Code-First のスキーマ定義: TypeScript のクラスを使用して GraphQL スキーマを定義する。
+- 型安全性と自動補完: Nexus を使用することで、スキーマ定義中に発生する多くのエラーやタイプミスをコンパイル時に検出できる。また、IDE での自動補完により、正確なスキーマの作成が容易になる。
+- DSL（Domain-Specific Language）: 独自の DSL の提供により、スキーマの定義をより簡潔かつ直感的に行える。クラスやデコレータの組み合わせにより、複雑なスキーマもシンプルに表現できる。
+- リゾルバ関数の自動生成: スキーマ内のフィールドに対するリゾルバ関数を自動生成する。これにより、スキーマとリゾルバの整合性を保ちつつ、コードを簡素化できる。
+- エクステンションとモジュール: スキーマの拡張やモジュール化をサポートする。
+- リレーションシップのサポート: リレーションシップやインターフェース、ユニオン型などの高度なスキーマ要素もサポートしており、複雑なデータモデリングも可能。
+
+### Pothos GraphQL
+
+https://pothos-graphql.dev/
 
 ## GraphQL クライアントの構築
 
@@ -57,6 +78,7 @@ REST API、GraphQL、ローカルキャッシュなど、様々なデータソ�
 - リトライとエラーハンドリング: ネットワークの問題や API エラーに対応するため、SWR は自動的にリトライやエラーハンドリングを行う。
 - インターバルリフェッチ: SWR は、指定したインターバルでデータの再取得をサポートする。
 
-### 参考リンク
+## 参考リンク
 
+- [TypeScript の code-first な GraphQL 開発ツール比較: TypeGraphQL vs Nexus vs Pothos - maybe daily dev notes](https://tmokmss.hatenablog.com/entry/20230109/1673237629)
 - [Comparison | React Query vs SWR vs Apollo vs RTK Query vs React Router | TanStack Query Docs](https://tanstack.com/query/latest/docs/react/comparison?from=reactQueryV3&original=https%3A%2F%2Ftanstack.com%2Fquery%2Fv3%2Fdocs%2Fcomparison)
