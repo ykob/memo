@@ -47,6 +47,8 @@ GraphQL スキーマを定義するための TypeScript ベースのライブラ
 
 https://nexusjs.org/docs/getting-started/tutorial/
 
+- このチュートリアルに記載されているコードは 2023/8/29 時点ではそのままでは動かない。最新版のモジュールに対応した書き方に変更する必要がある。
+
 ### Pothos GraphQL
 
 https://pothos-graphql.dev/
