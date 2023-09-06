@@ -96,6 +96,20 @@ REST API、GraphQL、ローカルキャッシュなど、様々なデータソ�
 - リトライとエラーハンドリング: ネットワークの問題や API エラーに対応するため、SWR は自動的にリトライやエラーハンドリングを行う。
 - インターバルリフェッチ: SWR は、指定したインターバルでデータの再取得をサポートする。
 
+### GraphQL Code Generator
+
+- [Home – GraphQL Code Generator](https://the-guild.dev/graphql/codegen)
+
+GraphQL スキーマを基に、クライアントアプリケーション用の型定義やクエリクライアントを生成する。  
+また、出力する言語やフレームワークに応じたプラグインが多数用意されている。
+
+- `@graphql-codegen/cli`: コアコマンドラインインターフェース（CLI）で、GraphQL Code Generator をコマンドラインから簡単に実行できるようにするためのツール。
+- `@graphql-codegen/typescript`: TypeScript の型定義を生成するための基本的なプラグイン。
+- `@graphql-codegen/typescript-operations`: GraphQL スキーマからクエリやミューテーションの型定義を生成する。
+- `@graphql-codegen/typescript-graphql-request`: [graphql-request](https://github.com/jasonkuhrt/graphql-request)というライブラリをベースにしたクライントを生成する。
+- `@graphql-codegen/typescript-resolvers`: GraphQL リゾルバー関数の型定義を生成する。サーバーサイドでの GraphQL スキーマの実装に役立つ。
+- `@graphql-codegen/typescript-react-apollo`: Apollo Client 関連の型定義を生成する。
+
 ## 参考リンク
 
 - [TypeScript の code-first な GraphQL 開発ツール比較: TypeGraphQL vs Nexus vs Pothos - maybe daily dev notes](https://tmokmss.hatenablog.com/entry/20230109/1673237629)
