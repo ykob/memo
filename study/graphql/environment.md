@@ -103,12 +103,20 @@ REST API、GraphQL、ローカルキャッシュなど、様々なデータソ�
 GraphQL スキーマを基に、クライアントアプリケーション用の型定義やクエリクライアントを生成する。  
 また、出力する言語やフレームワークに応じたプラグインが多数用意されている。
 
-- `@graphql-codegen/cli`: コアコマンドラインインターフェース（CLI）で、GraphQL Code Generator をコマンドラインから簡単に実行できるようにするためのツール。
-- `@graphql-codegen/typescript`: TypeScript の型定義を生成するための基本的なプラグイン。
-- `@graphql-codegen/typescript-operations`: GraphQL スキーマからクエリやミューテーションの型定義を生成する。
-- `@graphql-codegen/typescript-graphql-request`: [graphql-request](https://github.com/jasonkuhrt/graphql-request)というライブラリをベースにしたクライントを生成する。
-- `@graphql-codegen/typescript-resolvers`: GraphQL リゾルバー関数の型定義を生成する。サーバーサイドでの GraphQL スキーマの実装に役立つ。
-- `@graphql-codegen/typescript-react-apollo`: Apollo Client 関連の型定義を生成する。
+- `@graphql-codegen/cli`
+  - コアコマンドラインインターフェース（CLI）で、GraphQL Code Generator をコマンドラインから簡単に実行できるようにするためのツール。
+- `@graphql-codegen/typescript`
+  - TypeScript の型定義を生成するための基本的なプラグイン。
+  - 他の TypeScript プラグインが使用する基礎的な型定義を生成するので、導入は必須。
+- `@graphql-codegen/typescript-operations`
+  - GraphQL スキーマからクエリやミューテーション、またその引数や戻り値の型定義を生成する。
+- `@graphql-codegen/typescript-graphql-request`
+  - [graphql-request](https://github.com/jasonkuhrt/graphql-request)というライブラリをベースにしたクライントを生成する。
+- `@graphql-codegen/typescript-resolvers`
+  - GraphQL リゾルバー関数の型定義を生成する。サーバーサイドでの GraphQL スキーマの実装に役立つ。
+- `@graphql-codegen/typescript-react-apollo`
+  - 別途作成したクエリとミューテーションの GraphQL コードをもとに、 Apollo Client の useQuery を用いたデータ取得用の関数を生成する。
+  - `@graphql-codegen/typescript-operations` によって生成されるクエリとミューテーションを用いているため、連携は必須。
 
 ## 参考リンク
 
