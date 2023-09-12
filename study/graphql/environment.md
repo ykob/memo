@@ -83,6 +83,12 @@ https://www.apollographql.com/docs/react/
 - リアルタイムデータ: Apollo Client は、GraphQL のサブスクリプションを使用してリアルタイムデータの更新をサポートする。
 - UI フレームワークとの統合: Apollo Client は、主要な UI フレームワーク（React、Angular、Vue など）との統合を提供し、コンポーネント内でクエリを実行し、データを管理できるようにする。
 
+#### `@apollo/datasource-rest`
+
+https://github.com/apollographql/datasource-rest
+
+REST API を用いるデータのフェッチ、キャッシング、データの重複排除といったロジックをカプセル化した `RESTDataSource` というクラスを、Apollo Server の環境下に提供する。
+
 ### SWR
 
 https://swr.vercel.app/
