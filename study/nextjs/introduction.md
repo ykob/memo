@@ -30,6 +30,8 @@ npx create-next-app [project-name]
 - 共通レイアウトの導入が以前に比べ容易になった。
 - ページごとにメタデータを設定できる。
 - コンポーネントはデフォルトで Server Components になっている。
+- ルーティングフックには `next/navigation` を使う。
+- データフェッチには独自のフックではなく `fetch` を使う。
 
 ## 参考リンク
 
