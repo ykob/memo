@@ -2,10 +2,14 @@
 
 ## Next.js の主な特徴
 
-- [Pre-rendering](https://nextjs.org/docs/basic-features/pages#pre-rendering)
-- [SSR/SSG](https://nextjs.org/docs/basic-features/data-fetching/overview)
-- [file-system routing](https://nextjs.org/docs/routing/introduction)
-- [Image Optimization](https://nextjs.org/docs/basic-features/image-optimization)
+https://nextjs.org/docs#main-features
+
+- ルーティング: レイアウトシステム、ネストされたルーティング、読込状態、エラー処理に対応する
+- レンダリング: サーバーサイドの静的/動的レンダリングに対応する
+- データフェッチング: データフェッチの簡素化、リクエストのメモ化、データキャッシュ
+- スタイリング: CSS モジュール、CSS-in-JS など多用な手法に対応する
+- 最適化: 画像、フォント、script を最適化し、読込時間の高速化に対応する
+- 型付け: TypeScript をサポート
 
 ## インストール
 
@@ -15,6 +19,19 @@
 npx create-next-app [project-name]
 ```
 
+## App Router と Pages Router の違い
+
+2023 年 5 月、Next.js v13.4.0 で App Router の安定版が導入された。  
+従来の Router は Pages Router と呼ばれるようになった。
+
+### App Router の特徴
+
+- Pages Router に比べディレクトリ構成が管理しやすくなった。
+- 共通レイアウトの導入が以前に比べ容易になった。
+- ページごとにメタデータを設定できる。
+- コンポーネントはデフォルトで Server Components になっている。
+
 ## 参考リンク
 
 - [Setup - Create a Next.js App | Learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app/setup)
+- [一言で理解する React Server Components](https://zenn.dev/uhyo/articles/react-server-components-multi-stage)
