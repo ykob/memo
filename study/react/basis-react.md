@@ -140,6 +140,18 @@ React Hooksにおいては `useContext` という標準のフックが用意さ�
 2. `useContext` を用いてコンテクストオブジェクトを受け取り、そのコンテクストの現在値を取得する。  
 コンテクストの現在値は、ツリー内でこのフックを呼んだコンポーネントの直近にある `<MyContext.Provider>` の `value` の値によって決定される。
 
+## ポータル
+
+`createPortal` によって、コンポーネントのツリー構造に関わらず指定したノードに JSX をレンダリングすることができる。  
+`z-index` の制約から脱却しやすいため、モーダル、ダイアログ、ツールチップ、ドロップダウンメニューなどに用いられることが多い。
+
+```
+<div>
+  <SomeComponent />
+  {createPortal(children, domNode, key?)}
+</div>
+```
+
 ## 参考リンク
 
 - [フックの導入 - React](https://ja.reactjs.org/docs/hooks-intro.html)
