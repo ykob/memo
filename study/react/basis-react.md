@@ -44,6 +44,11 @@ useEffect(() => {
 }, [props.count])
 ```
 
+## `useState` と `useReducer`
+
+`useState` は単純な状態管理に用いるフックであるのに対し、`useReducer` はより複雑な状態管理に適したフックである。  
+特に、状態が複数の値からなり、状態の更新に複雑なロジックが必要な場合に役立つ。
+
 ## `useMemo` と `useCallback`
 
 `useMemo` と `useCallback` はいずれも基本的にコンポーネントの再レンダリングを最適化するために用意されている。  
