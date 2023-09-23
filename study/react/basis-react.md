@@ -49,6 +49,30 @@ useEffect(() => {
 `useState` は単純な状態管理に用いるフックであるのに対し、`useReducer` はより複雑な状態管理に適したフックである。  
 特に、状態が複数の値からなり、状態の更新に複雑なロジックが必要な場合に役立つ。
 
+`useReducer` は実行時、第一引数に Reducer 関数、第二引数に初期の状態、第三引数に初期化関数を受け取る。  
+`useReducer` はまた `state` と `dispatch` を返す。`state` は現在の状態を表し、`dispatch` は Reducer 関数を呼び出すための関数である。
+
+```
+const initialState = { count: 0 };
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+};
+
+const init = (initialState) => {
+  return { count: initialState.count };
+};
+
+const [state, dispatch] = useReducer(reducer, initialState, init);
+```
+
 ## `useMemo` と `useCallback`
 
 `useMemo` と `useCallback` はいずれも基本的にコンポーネントの再レンダリングを最適化するために用意されている。  
