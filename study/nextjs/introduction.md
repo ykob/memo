@@ -44,6 +44,8 @@ npx create-next-app [project-name]
 - サーバコンポーネントが実行されるタイミングは複数ある。
   - リクエスト時の情報に依存しないものであればビルド時に行う。(SG に似ている)
   - リクエスト時の情報に依存するものであればリクエスト時に行う。（SSR に似ている）
+- 状態を持たないので、 `useState`, `useReducer` は使えない。 `useContext` も使えない。
+- 再描画されないので、 `useEffefct`, `useLayoutEffect` は使えない。
 
 ## 参考リンク
 
