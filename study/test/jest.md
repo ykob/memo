@@ -41,7 +41,7 @@ expect(value).toBe(true);
 
 | マッチャー | 意味 |
 | --- | --- |
-| `toBe(value)` | `expect` に渡した値と `value` を比較する。<br>浮動小数点数を用いる場合は代わりに `toBeCloseTo` を利用する。 |
+| `toBe(value)` | `expect` に渡した値と `value` を比較する。浮動小数点数を用いる場合は代わりに `toBeCloseTo` を利用する。 |
 | `toBeNull()` | `expect` に渡した値が `null` の場合に一致する |
 | `toBeUndefined()` | `expect` に渡した値が `undefined` の場合に一致する |
 | `toBeDefined()` | `expect` に渡した値が `undefined` ではない場合に一致する |
@@ -52,7 +52,10 @@ expect(value).toBe(true);
 | `toBeGreaterThanEqual(value)` | `expect` に渡した値が `value` 以上である場合に一致する |
 | `toBeLessThan(value)` | `expect` に渡した値が `value` より小さい場合に一致する |
 | `toBeLessThanEqual(value)` | `expect` に渡した値が `value` 以下である場合に一致する |
-| `toHaveBeenCalled()` | 指定のモック関数が呼び出されたかどうかを確認する。 |
+| `toContain(value)` | `expect` に渡した値に `value` が含まれる場合に一致する |
+| `toMatch(value)` | `expect` に渡した値が `value` の正規表現と一致する場合に一致する |
+| `toHaveLength(value)` | `expect` に渡した値の文字列の長さが `value` の場合に一致する |
+| `toHaveBeenCalled()` | 指定のモック関数が呼び出されたかどうかを確認する |
 | `toThrow(error?)` | 指定の関数がエラーを投げたかどうか確認する。引数に正規表現、文字列、エラーオブジェクト、エラークラスを指定すると、エラーがそれに一致するかどうかまで確認できる。 |
 
 ## モック関数
