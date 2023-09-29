@@ -94,6 +94,20 @@ expect(fn).toBe(2);
 expect(fn).toBe(0);
 ```
 
+### `jest.mock(moduleName, factory, options)`
+
+`moduleName` で指定したモジュールが `require` あるいは `import` された際に、そのモックを自動的に作成する。  
+以下は `next/router` のライブラリ実行にモックを利用したい場合の記述例。
+
+```typescript
+jest.mock("next/router", () => require("next-router-mock"));
+```
+
+### `jest.requireActual(moduleName)`
+
+`moduleName` で指定したモジュールがモックを受け取るかどうかを確認せず、指定のモジュールそのものを返す。  
+`require` あるいは `import` したモジュールの一部のみモックしたい場合などに用いる。
+
 ### `jest.spyOn(object, methodName)`
 
 `object[methodName]` のモック関数を返す。  
@@ -116,9 +130,36 @@ const random = jest.spyOn(global.Math, 'random');
 random.mockReturnValue(0.5);
 ```
 
-### `jest.mock(moduleName, factory, options)`
+Web API実行などのPromiseを返す関数の成功/失敗を扱うモック関数を作成したい場合、
+成功の場合は `mockResolvedValue` または `mockResolvedValueOnce` を、
+失敗の場合は `mockRejectedValue` または `mockRejectedValueOnce` を使用する。
 
-`moduleName` で指定したモジュールが `require` あるいは `import` された際に、そのモックを自動的に作成する。
+以下は `getProfile` というAPI実行用async関数のモックを作成して実行する例。
+
+```typescript
+import { getProfile } from "./fetchers";
+
+async function getName() {
+  const { name } = await getProfile();
+
+  return name
+}
+```
+
+```typescript
+import Fetchers from "./fetchers";
+
+jext.mock("./fetchers");
+
+const mockGetProfile = jest.spyOn(Fetchers, "getProfile")
+
+mockGetProfile.mockResolvedValueOnce({
+  id: "01234567890",
+  name: "John Smith"
+});
+
+await expect(getName()).resolves.toBe("John Smith");
+```
 
 ## 参考リンク
 
