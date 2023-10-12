@@ -22,13 +22,13 @@ DOM ノードのテストを行うライブラリである `DOM Testing Library`
 
 ### npm
 
-```
+```Shell
 npm install --save-dev @testing-library/react
 ```
 
 ### yarn
 
-```
+```Shell
 yarn add --dev @testing-library/react
 ```
 
@@ -46,14 +46,14 @@ yarn add --dev @testing-library/react
 `jest.spyOn` を用いてモックする。  
 具体的には以下のように記述してモック関数を定義する。
 
-```
+```TypeScript
 const useRouter = jest.spyOn(require("next/router"), "useRouter");
 ```
 
 ここで定義された変数 `useRouter` は jest のモック関数なので `mockImplementation` などをつなげて実行できる。  
 routerと同様のオブジェクトを代入することでrouterの挙動をテストコード上で制御することができる。
 
-```
+```TypeScript
 useRouter.mockImplementation(() => ({
   isReady: true,
   query: {},
