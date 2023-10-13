@@ -71,6 +71,11 @@ useRouter.mockImplementation(() => ({
 - propsで渡した関数がイベントによって想定どおりに実行されるか
 - 条件分岐による表示の変更パターンがすべて想定どおりに表示されているか
 
+## 気を付けたほうがいいこと
+
+- 要素の取得にはアクセシブルネームを用いたほうがよい
+- テスト上での要素識別を適切に行うために、コンポーネントのJSXマークアップではアクセシビリティに配慮する
+
 ## 参考リンク
 
 - [React Testing Library | Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
