@@ -31,15 +31,15 @@ jest に関する設定の項目は jest 公式にあるものと同様に追加
 
 `@types/jest` をインストールする。
 
-```
+```shell
 yarn add -D @types/jest
 ```
 
-## テスト実行用 npm コマンドを追加する。
+## テスト実行用 npm コマンドを追加する
 
 package.json に以下を追加する。
 
-```
+```json
 {
   ...
   "scripts": {

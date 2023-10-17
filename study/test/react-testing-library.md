@@ -22,13 +22,13 @@ DOM ノードのテストを行うライブラリである `DOM Testing Library`
 
 ### npm
 
-```Shell
+```shell
 npm install --save-dev @testing-library/react
 ```
 
 ### yarn
 
-```Shell
+```shell
 yarn add --dev @testing-library/react
 ```
 

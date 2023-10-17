@@ -10,13 +10,13 @@ JestはMeta社により開発されたJavaScriptテスティングフレーム�
 
 ### npm
 
-```bash
+```shell
 npm install --save-dev jest
 ```
 
 ### yarn
 
-```bash
+```shell
 yarn add --dev jest
 ```
 
