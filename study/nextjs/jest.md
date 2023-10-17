@@ -4,8 +4,8 @@
 
 以下、必要最低限のモジュールをインストールする。
 
-```
-yarn add -D jest @testing-library/react @testing-library/jest-dom
+```shell
+yarn add -D jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom
 ```
 
 ## `jest.config.mjs`
@@ -15,7 +15,17 @@ jest に関する設定の項目は jest 公式にあるものと同様に追加
 一部例として以下のものがある。
 
 - `rootDir` : 実行対象のテストコードを含むディレクトリのパスを指定する。
-- `testEnvironment` : テスト実行時に使用される環境を指定する。ブラウザライクな環境を使用するのであれば `jest-environment-jsdom` の指定でよい。
+- `testEnvironment` : テスト実行時に使用される環境を指定する。ブラウザライクな環境を使用するのであれば `jsdom` の指定でよい。
+- `transform` : コード変換に用いるプラグインを指定する。テストコードにTypeScriptを用いる場合などに利用する。
+
+テストコードによって `testEnvironment` で指定した環境以外を適用したい場合、  
+テストコードの冒頭で以下のようにコメントで指定できる。
+
+```typescript
+/**
+ * @jest-environment node
+ */
+```
 
 ## テストコードを TypeScript に対応させる
 
