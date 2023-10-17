@@ -20,6 +20,22 @@ npm install --save-dev jest
 yarn add --dev jest
 ```
 
+## TypeScript対応
+
+`ts-jest` を導入する。
+
+### npm
+
+```shell
+npm install --save-dev jest typescript ts-jest @types/jest
+```
+
+### yarn
+
+```shell
+yarn add --dev jest typescript ts-jest @types/jest
+```
+
 ## テストすべきこと
 
 - 正常系の処理で期待どおりの値が返ってきているか
