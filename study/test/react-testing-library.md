@@ -20,16 +20,8 @@ DOM ノードのテストを行うライブラリである `DOM Testing Library`
 
 以下コマンドで該当プロジェクトにインストールできる。
 
-### npm
-
 ```shell
 npm install --save-dev @testing-library/react
-```
-
-### yarn
-
-```shell
-yarn add --dev @testing-library/react
 ```
 
 ## `render(ui: ReactElement, options?)`
