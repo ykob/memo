@@ -82,3 +82,4 @@ useRouter.mockImplementation(() => ({
 ## 参考リンク
 
 - [React Testing Library | Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [WAI-ARIA ロール - アクセシビリティ | MDN](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)
