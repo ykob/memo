@@ -71,3 +71,17 @@ const Button = ({ chirdren }) => (
   </button>
 )
 ```
+
+## Theme
+
+`panda.config`上でCSSテーマを定義できる。  
+テーマでは以下の項目を指定することができる。
+
+- breakpoints ... ブレークポイント
+- keyframes ... CSS Animationのkeyframe
+- tokens ... デザイントークン（基礎的、原子的なルール）
+- semanticTokens ... デザイントークン（セマンティックなルール）
+- textStyles ... タイポグラフィ
+- layerStyles ... ボックス要素を構成するスタイル（`background`, `border`, `color`, `padding`など）
+- recipes ... [レシピ](https://panda-css.com/docs/concepts/recipes)
+- slotRecipes ... [スロットレシピ](https://panda-css.com/docs/concepts/slot-recipes)
