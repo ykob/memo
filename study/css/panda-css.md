@@ -85,3 +85,19 @@ const Button = ({ chirdren }) => (
 - layerStyles ... ボックス要素を構成するスタイル（`background`, `border`, `color`, `padding`など）
 - recipes ... [レシピ](https://panda-css.com/docs/concepts/recipes)
 - slotRecipes ... [スロットレシピ](https://panda-css.com/docs/concepts/slot-recipes)
+
+## Global Styles
+
+グローバルなCSSの記述はconfigの`globalCss`プロパティに記述する。  
+値にはThemeで定義したルールを適用できる。
+https://panda-css.com/docs/migration/styled-components#global-styles
+
+```
+export default defineConfig({
+  globalCss: {
+    body: {
+      fontFamily: 'body',
+    },
+  },
+});
+```
