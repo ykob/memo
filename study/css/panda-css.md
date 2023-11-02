@@ -89,7 +89,7 @@ const Button = ({ chirdren }) => (
 ## Global Styles
 
 グローバルなCSSの記述はconfigの`globalCss`プロパティに記述する。  
-値にはThemeで定義したルールを適用できる。
+値にはThemeで定義したルールを適用できる。  
 https://panda-css.com/docs/migration/styled-components#global-styles
 
 ```
