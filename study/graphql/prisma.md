@@ -15,3 +15,7 @@ Node.jsやTypeScript、Rustなどの言語で書かれたアプリケーショ�
 
 データベースのテーブルとオブジェクト指向プログラミング言語のオブジェクトをマッピングするための仕組み。  
 SQLを直接書くことなく、オブジェクト指向プログラミング言語でデータベースを操作できる。
+
+## Authentication with Yoga
+
+- [Authentication – GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/tutorial/advanced/01-authentication)
