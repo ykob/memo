@@ -20,7 +20,8 @@ watch状態でVitestを実行するには`vitest`コマンドを利用する。
 ```json
 {
   "scripts": {
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest",
   }
 }
 ```
@@ -52,7 +53,7 @@ Vitestと各種フレームワーク/ライブラリとの組み合わせのサ�
 
 - [vitest/examples at main · vitest-dev/vitest](https://github.com/vitest-dev/vitest/tree/main/examples)
 
-### WorkSpaceの利用
+## WorkSpaceの利用
 
 `vitest.workspace.ts`に複数のプロジェクトの設定をまとめて記述できる。
 
