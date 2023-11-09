@@ -91,3 +91,29 @@ npm install -D @testing-library/react @testing-library/jest-dom
 ```
 
 Vitestを利用する場合でも、テストコードでDOMを扱いたい場合は`@testing-library/jest-dom`を用いる。
+
+## Jestとの違い
+
+`afterEach`, `beforeEach`, `describe`, `expect`, `it`など、
+頻繁に使用するAPIはJestと同様の形式で提供されており、Jestと区別なく使用できるようになっている。
+
+モッキングについては、Jestでは`jest.spyOn()`を使用するが、Vitestでは`vi.spyOn()`を利用する。  
+
+```TypeScript
+let apples = 0
+const cart = {
+  getApples: () => 13,
+}
+
+const spy = vi.spyOn(cart, 'getApples').mockImplementation(() => apples)
+apples = 1
+
+expect(cart.getApples()).toBe(1)
+
+expect(spy).toHaveBeenCalled()
+expect(spy).toHaveReturnedWith(1)
+```
+
+`vi`は`spyOn`以外にも多数のモック用APIを内在している。
+
+- [Vi | Vitest](https://vitest.dev/api/vi.html#vi-spyon)
