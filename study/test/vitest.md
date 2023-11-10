@@ -97,7 +97,8 @@ Vitestを利用する場合でも、テストコードでDOMを扱いたい場�
 `afterEach`, `beforeEach`, `describe`, `expect`, `it`など、
 頻繁に使用するAPIはJestと同様の形式で提供されており、Jestと区別なく使用できるようになっている。
 
-モッキングについては、Jestでは`jest.spyOn()`を使用するが、Vitestでは`vi.spyOn()`を利用する。  
+モッキングについては、Jestでは`jest.mock()`もしくは`jest.spyOn()`を使用するが、  
+Vitestでは`vi.mock()`もしくは`vi.spyOn()`を利用する。  
 
 ```TypeScript
 let apples = 0
@@ -114,6 +115,6 @@ expect(spy).toHaveBeenCalled()
 expect(spy).toHaveReturnedWith(1)
 ```
 
-`vi`は`spyOn`以外にも多数のモック用APIを内在している。
+`vi`は`mock`や`spyOn`以外にも多数のモック用APIを内在している。
 
-- [Vi | Vitest](https://vitest.dev/api/vi.html#vi-spyon)
+- [Vi | Vitest](https://vitest.dev/api/vi.html)
