@@ -71,7 +71,11 @@ GraphQL スキーマを基に、クライアントアプリケーション用の
   - 別途作成したクエリとミューテーションの GraphQL コードをもとに、 Apollo Client の useQuery を用いたデータ取得用の関数を生成する。
   - `@graphql-codegen/typescript-operations` によって生成されるクエリとミューテーションを用いているため、連携は必須。
 
+
+
 ## 参考リンク
 
 - [TypeScript の code-first な GraphQL 開発ツール比較: TypeGraphQL vs Nexus vs Pothos - maybe daily dev notes](https://tmokmss.hatenablog.com/entry/20230109/1673237629)
 - [Comparison | React Query vs SWR vs Apollo vs RTK Query vs React Router | TanStack Query Docs](https://tanstack.com/query/latest/docs/react/comparison?from=reactQueryV3&original=https%3A%2F%2Ftanstack.com%2Fquery%2Fv3%2Fdocs%2Fcomparison)
+- [GraphQL Code Generator(graphql-codegen) おすすめ設定 for TypeScript](https://zenn.dev/izumin/articles/ffc84c1b4310be#typescript-plugin%2C-typescript-operation-plugin)
+- [graphql-codegen Client Preset 時代(v3~)の おすすめ設定 for TypeScript](https://zenn.dev/layerx/articles/028cb518cffd61)
