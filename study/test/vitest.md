@@ -115,6 +115,6 @@ expect(spy).toHaveBeenCalled()
 expect(spy).toHaveReturnedWith(1)
 ```
 
-`vi`は`mock`や`spyOn`以外にも多数のモック用APIを内在している。
+`vi`は`mock`や`spyOn`以外にも多数のAPIを内在している。
 
 - [Vi | Vitest](https://vitest.dev/api/vi.html)
