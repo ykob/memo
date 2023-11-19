@@ -20,7 +20,6 @@ SQLを直接書くことなく、オブジェクト指向プログラミング�
 
 - [Authentication – GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/tutorial/advanced/01-authentication)
 
-
 ## Migration
 
 マイグレーションとは、データベースに保存されているデータを保持したまま、テーブルの作成やカラムの追加、削除などの変更を行うための機能。
@@ -31,7 +30,7 @@ Prismaでは`prisma migrate`コマンドを使ってマイグレーションを�
 マイグレーションを実行すると、`schema.prisma`であらかじめ定義されたモデルを元にマイグレーションファイルが生成され、データベースのテーブルやカラムが作成・更新される。
 
 ```bash
-$ npx prisma migrate dev --name init
+npx prisma migrate dev --name init
 ```
 
 ## Prisma Schema
