@@ -16,10 +16,6 @@ Node.jsやTypeScript、Rustなどの言語で書かれたアプリケーショ�
 データベースのテーブルとオブジェクト指向プログラミング言語のオブジェクトをマッピングするための仕組み。  
 SQLを直接書くことなく、オブジェクト指向プログラミング言語でデータベースを操作できる。
 
-## Authentication with Yoga
-
-- [Authentication – GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/tutorial/advanced/01-authentication)
-
 ## Migration
 
 マイグレーションとは、データベースに保存されているデータを保持したまま、テーブルの作成やカラムの追加、削除などの変更を行うための機能。
@@ -53,3 +49,7 @@ model Post {
   authorId Int
 }
 ```
+
+## References
+
+- [Authentication – GraphQL Yoga](https://the-guild.dev/graphql/yoga-server/tutorial/advanced/01-authentication)
