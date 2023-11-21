@@ -44,7 +44,7 @@ npm install --save-dev @testing-library/react
 ## 気を付けたほうがいいこと
 
 - 要素の取得にはアクセシブルネームを用いたほうがよい
-  - `getByRole()` で `role` 引数だけでなく `option` 引数の `name` をきちんと指定する、`aria-label`や`aria-labelledby`といったWAI-ARIAの属性を用いるなど
+  - `getByRole()` で `role` 引数だけでなく `option` 引数の `name` をきちんと指定する、 `getByLabelText()` を用いる、 `aria-label` や `aria-labelledby` といったWAI-ARIAの属性を用いるなど
   - アクセシブルネームを用いず `role` だけで判断しようとすると、誤った要素を取得してテストコードが想定どおりに行われない恐れが出る
   - [アクセシブルネームの算出には様々な要素が影響するので注意](https://www.w3.org/TR/accname-1.2/)
 - テスト上での要素識別を適切に行うために、コンポーネントのJSXマークアップではアクセシビリティに配慮する
