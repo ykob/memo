@@ -31,14 +31,57 @@ npx prisma migrate dev --name init
 
 ## Prisma Schema
 
-### Relations
+Prismaのセットアップに用いられる構成ファイル。  
+`schema.prisma`というファイル名で用いられることが多い。  
+`generator`、`datasource`、`model` の3つのブロックから構成される。
 
-`@relation`ディレクティブを使って、スキーマ内で定義されている2つのモデルをつなぐ。
+### Generator
+
+データモデルをもとに生成されるクライアントを定義するためのブロック。  
+`generator`ディレクティブを使う。  
+代表的なクライアントとしては、Prisma Clientがある。
+
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+```
+
+### Datasource
+
+データベースの接続情報を定義するためのブロック。  
+`datasource`ディレクティブを使う。  
+`provider`プロパティにデータベースの種類を指定し、`url`プロパティにデータベースの接続情報を記述する。
+
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+### Model
+
+アプリケーションのデータモデルとリレーションを定義するためのブロック。
 
 ```prisma
 model User {
   id    Int    @id @default(autoincrement())
   email String @unique
+  name  String?
+  posts Post[]
+}
+```
+
+#### Relations
+
+`@relation`ディレクティブを使って、スキーマ内で定義されている2つのモデルをつなぐことができる。
+
+```prisma
+model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String?
   posts Post[]
 }
 
