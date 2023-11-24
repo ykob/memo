@@ -7,10 +7,8 @@
 | [Material Design](https://material.io/design) | Google |
 | [IBM Design Language](https://www.ibm.com/design/language/) | IBM |
 | [Atlassian Design Guidelines](https://atlassian.design/) | Atlassian |
-| [Airbnb Design System](https://design.airbnb.com/) | Airbnb |
 | [Lightning Design System](https://www.lightningdesignsystem.com/) | Salesforce |
 | [Polaris](https://polaris.shopify.com/) | Shopify |
-| [Uber Design](https://design.uber.com/) | Uber |
 | [Fluent Design](https://www.microsoft.com/design/fluent/#/) | Microsoft |
 | [Dropbox Design](https://www.dropbox.com/design) | Dropbox |
 | [Mailchimp Design System](https://ux.mailchimp.com/patterns) | Mailchimp |
