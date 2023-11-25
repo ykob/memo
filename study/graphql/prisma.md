@@ -16,23 +16,11 @@ Node.jsやTypeScript、Rustなどの言語で書かれたアプリケーショ�
 データベースのテーブルとオブジェクト指向プログラミング言語のオブジェクトをマッピングするための仕組み。  
 SQLを直接書くことなく、オブジェクト指向プログラミング言語でデータベースを操作できる。
 
-## Migration
-
-マイグレーションとは、データベースに保存されているデータを保持したまま、テーブルの作成やカラムの追加、削除などの変更を行うための機能。
-
-- [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate)
-
-Prismaでは`prisma migrate`コマンドを使ってマイグレーションを行う。  
-マイグレーションを実行すると、`schema.prisma`であらかじめ定義されたモデルを元にマイグレーションファイルが生成され、データベースのテーブルやカラムが作成・更新される。
-
-```bash
-npx prisma migrate dev --name init
-```
-
 ## Prisma Schema
 
 Prismaのセットアップに用いられる構成ファイル。  
 `schema.prisma`というファイル名で用いられることが多い。  
+Prisma MigrateはPrisma Schemaに記載されたオブジェクトの構成に基づいてデータベースのテーブルを作成する。  
 `generator`、`datasource`、`model` の3つのブロックから構成される。
 
 ### Generator
@@ -91,6 +79,19 @@ model Post {
   author   User @relation(fields: [authorId], references: [id])
   authorId Int
 }
+```
+
+## Migration
+
+マイグレーションとは、データベースに保存されているデータを保持したまま、テーブルの作成やカラムの追加、削除などの変更を行うための機能。
+
+- [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate)
+
+Prismaでは`prisma migrate`コマンドを使ってマイグレーションを行う。  
+マイグレーションを実行すると、`schema.prisma`であらかじめ定義されたモデルを元にマイグレーションファイルが生成され、データベースのテーブルやカラムが作成・更新される。
+
+```bash
+npx prisma migrate dev --name init
 ```
 
 ## References
