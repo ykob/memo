@@ -40,3 +40,4 @@ Server Session Stateと同様、クライアント側が持つ情報はセッシ
 ## 参考リンク
 
 - [Webアプリケーションのセッション管理](https://fintan.jp/wp-content/uploads/2021/12/eafb1d61d2382a450ded5d97a4a2c464.pdf)
+- [App Tutorial (long) | Remix](https://remix.run/docs/en/main/tutorials/jokes)
