@@ -57,6 +57,25 @@ npm install --save-dev @testing-library/react
 
 ## Tips
 
+### イベントの実行をテストする
+
+`@testing-library/user-event` を用いると、実際のユーザー操作に近いシミュレートを行うことが出来る。  
+例えば以下のように記述することで、ボタンをクリックしたときの挙動をテストすることが出来る。
+
+```TypeScript
+import userEvent from '@testing-library/user-event'
+
+it('Click the submit button.', async () => {
+  const user = userEvent.setup();
+
+  render(<MyComponent />);
+  const button = screen.getByRole('button', { name: "submit-button" });
+  await user.click(button);
+})
+```
+
+ユーザーイベントは非同期処理であるため、イベント着火前後のテスト順序を制御するために `await` を用いる必要がある点に注意する。  
+
 ### next/router のモック
 
 `jest.spyOn` を用いてモックする。  
