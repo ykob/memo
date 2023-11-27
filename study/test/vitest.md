@@ -118,3 +118,91 @@ expect(spy).toHaveReturnedWith(1)
 `vi`は`mock`や`spyOn`以外にも多数のAPIを内在している。
 
 - [Vi | Vitest](https://vitest.dev/api/vi.html)
+
+## テストの記述パターン
+
+### テストのグループ化
+
+`describe`を用いてテストをグループ化することができる。
+
+```TypeScript
+import { describe, expect, it } from 'vitest'
+
+describe('テストのグループ化', () => {
+  it('テスト1', () => {
+    expect(true).toBe(true)
+  })
+
+  it('テスト2', () => {
+    expect(true).toBe(true)
+  })
+})
+```
+
+### テストのイテレーション
+
+`it.each`を用いてテストをイテレーションすることができる。  
+https://vitest.dev/api/#test-each
+
+```TypeScript
+import { describe, expect, it } from 'vitest'
+
+describe('テストのイテレーション', () => {
+  test.each([
+    [1, 1, 2],
+    [1, 2, 3],
+    [2, 1, 3],
+  ])('add(%i, %i) -> %i', (a, b, expected) => {
+    expect(a + b).toBe(expected)
+  });
+})
+```
+
+イテレーションの候補はテンプレートリテラルやオブジェクト形式で記述することもできる。
+
+```TypeScript
+test.each([
+  { a: 1, b: 1, expected: 2 },
+  { a: 1, b: 2, expected: 3 },
+  { a: 2, b: 1, expected: 3 },
+])('add($a, $b) -> $expected', ({ a, b, expected }) => {
+  expect(a + b).toBe(expected)
+});
+```
+
+```TypeScript
+test.each`
+  a    | b    | expected
+  ${1} | ${1} | ${2}
+  ${1} | ${2} | ${3}
+  ${2} | ${1} | ${3}
+`('add($a, $b) -> $expected', ({ a, b, expected }) => {
+  expect(a + b).toBe(expected)
+});
+```
+
+グループでも同様にイテレーションさせることができる。  
+その場合は `describe.each` を用いる。  
+https://vitest.dev/api/#describe-each
+
+```TypeScript
+import { describe, expect, it } from 'vitest'
+
+describe.each([
+  { a: 1, b: 1, expected: 2 },
+  { a: 1, b: 2, expected: 3 },
+  { a: 2, b: 1, expected: 3 },
+])('describe object add($a, $b)', ({ a, b, expected }) => {
+  test(`returns ${expected}`, () => {
+    expect(a + b).toBe(expected)
+  })
+
+  test(`returned value not be greater than ${expected}`, () => {
+    expect(a + b).not.toBeGreaterThan(expected)
+  })
+
+  test(`returned value not be less than ${expected}`, () => {
+    expect(a + b).not.toBeLessThan(expected)
+  })
+})
+```
