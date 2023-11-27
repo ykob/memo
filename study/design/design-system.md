@@ -10,7 +10,6 @@
 | [Lightning Design System](https://www.lightningdesignsystem.com/) | Salesforce |
 | [Polaris](https://polaris.shopify.com/) | Shopify |
 | [Fluent Design](https://www.microsoft.com/design/fluent/#/) | Microsoft |
-| [Dropbox Design](https://www.dropbox.com/design) | Dropbox |
 | [Mailchimp Design System](https://ux.mailchimp.com/patterns) | Mailchimp |
 | [Trello Design System](https://design.trello.com/) | Trello |
 
