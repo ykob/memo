@@ -9,8 +9,8 @@
 | [Atlassian Design Guidelines](https://atlassian.design/) | Atlassian |
 | [Lightning Design System](https://www.lightningdesignsystem.com/) | Salesforce |
 | [Polaris](https://polaris.shopify.com/) | Shopify |
-| [Fluent Design](https://www.microsoft.com/design/fluent/#/) | Microsoft |
-| [Mailchimp Design System](https://ux.mailchimp.com/patterns) | Mailchimp |
+| [Fluent 2 Design System](https://fluent2.microsoft.design/#/) | Microsoft |
+| [Mailchimp](https://ux.mailchimp.com/) | Mailchimp |
 | [Trello Design System](https://design.trello.com/) | Trello |
 
 ## References
