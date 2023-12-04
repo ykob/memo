@@ -3,6 +3,8 @@
 expressはNode.js用のウェブアプリケーションフレームワーク。  
 https://expressjs.com/
 
+expressは非常に軽微なフレームワークであり、基本的な機能はルーティングとミドルウェアの2つのみである。
+
 ## ルーティング
 
 ルーティングは`app.METHOD(PATH, HANDLER)`の形式で定義する。  
@@ -33,12 +35,17 @@ https://expressjs.com/ja/4x/api.html#app.METHOD
 
 ### ルート・パラメータ
 
-ルート・パラメータは、ルート・パスの一部として指定された名前付き変数である。
+ルート・パラメータは、ルート・パスの一部として指定された名前付き変数である。  
+`:`を使ってルートを定義すると、その値を変数として受け取ることができる。
 
 ```typescript
 app.get('/users/:userId/books/:bookId', (req, res) => {
   res.send(req.params);
+  console.log(req.params);
 });
+
+// http://localhost:3000/users/34/books/8989
+// { "userId": "34", "bookId": "8989" }
 ```
 
 ### ルート・ハンドラ
@@ -101,3 +108,18 @@ app.get('/example/c', [cb0, cb1, cb2]);
 - res.send(): 各種タイプのレスポンスを送信する
 - res.sendFile(): ファイルを送信する
 - res.sendStatus(): 状態コードを設定してレスポンスを送信する
+
+## ミドルウェア
+
+expressのミドルウェアとは、リクエストオブジェクト(req)、レスポンスオブジェクト(res)を表すオブジェクトを引数に取る関数である。  
+受け取ったリクエストからレスポンスを返すか、次のミドルウェア関数(next)を呼び出すことができる。
+
+以下の例では、第2引数に与えられている関数がミドルウェアである。  
+reqにはルートにアクセスされた際の情報が入っている。  
+resにはレスポンスを返すための関数が入っており、メソッドチェーンでレスポンスを返すことができる。
+
+```typescript
+app.get('/', (req, res) => {
+  res.status(200).send('Hello World!');
+});
+```
