@@ -123,3 +123,30 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World!');
 });
 ```
+
+ミドルウェアは`app.use()`を使って定義すると、アプリケーションのすべてのルートで実行されるようになる。
+
+```typescript
+const myLogger = (req, res, next) => {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+```
+
+### 包括的エラーハンドリング
+
+ミドルウェア関数は、アプリケーションのすべてのルートで実行されるため、エラーハンドリングにも使用できる。  
+expressでは、エラーハンドリング用のミドルウェア関数は、引数を4つ持つ関数であると定義されている。
+
+```typescript
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+```
+
+このエラーハンドラでキャッチできるのは「同期的なエラー」と「next関数の引数にエラーを渡した場合」のみである。  
+非同期的なエラーはキャッチできないため、非同期的なエラーをキャッチするためには、`try...catch`を使う必要がある。
+
