@@ -150,3 +150,19 @@ app.use((err, req, res, next) => {
 このエラーハンドラでキャッチできるのは「同期的なエラー」と「next関数の引数にエラーを渡した場合」のみである。  
 非同期的なエラーはキャッチできないため、非同期的なエラーをキャッチするためには、`try...catch`を使う必要がある。
 
+## Body Parser
+
+expressでは、リクエストのボディを解析するために、body-parserミドルウェアを使用する。  
+最新版のExpressでは、body-parserミドルウェアはexpressに統合されているため、別途インストールする必要はない。
+
+```typescript
+import express from 'express';
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+```
+
+- `express.json()`: JSON形式で送信されたHTTPリクエストを扱えるようにする。
+- `express.urlencoded()`: URLエンコードされた(`x-www-form-urlencoded`形式の)データを扱えるようにする。
