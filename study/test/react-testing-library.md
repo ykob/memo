@@ -54,6 +54,8 @@ npm install --save-dev @testing-library/react
 - ある時点のレンダリング結果をHTML文字列として外部ファイルに保存する
 - `toMatchSnapshot`を含んだアサーションを実行することで行われる。
 - 意図しないリグレッション（後戻り）を検知するのに役立つ。
+- `<></>`で囲ったReactコンポーネントをスナップショットテストにかけるときには、要素の取得に`asFragment`を使うとよい。
+  - [API | Testing Library](https://testing-library.com/docs/react-testing-library/api/#asfragment)
 
 ## Tips
 
