@@ -1,5 +1,16 @@
 # Express / Prisma を用いたJWT認証機能の実装
 
+## JWTとは
+
+JWTとは、JSON Web Tokenの略で、JSON形式で情報をやり取りするための仕様のこと。  
+JWTはRFC 7519で定義されている。
+
+JWTは、以下の3つの文字列をピリオドで区切った文字列で表される。
+
+- ヘッダー
+- ペイロード
+- 署名
+
 ## 使用する環境
 
 | Module | Usage |
@@ -12,6 +23,7 @@
 
 ## 参考リンク
 
+- [RFC 7519 - JSON Web Token (JWT)](https://datatracker.ietf.org/doc/html/rfc7519)
 - [JWT Authentication using Prisma and Express - DEV Community](https://dev.to/mihaiandrei97/jwt-authentication-using-prisma-and-express-37nk)
 
 ## 手順
