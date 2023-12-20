@@ -29,4 +29,62 @@ JWTは、以下の3つの文字列をピリオドで区切った文字列で表�
 
 ## 手順
 
-あとでかく
+- schema.prismaに、ユーザー情報 `User` とリフレッシュトークン `RefreshToken` のモデルを追加する。
+- ユーザー情報 `User` に関連するサービスを定義する
+- ユーザー情報 `User` に関連するAPIルートを定義する
+- 認証処理 `Auth` に関連するサービスを定義する
+- 認証処理 `Auth` に関連するAPIルートを定義する
+- 認証処理のミドルウェアを作成する
+
+### schema.prismaに、ユーザー情報 `User` とリフレッシュトークン `RefreshToken` のモデルを追加する。
+
+### ユーザー情報 `User` に関連するサービスを定義する
+
+### ユーザー情報 `User` に関連するAPIルートを定義する
+
+### 認証処理 `Auth` に関連するサービスを定義する
+
+### 認証処理 `Auth` に関連するAPIルートを定義する
+
+### 認証処理のミドルウェアを作成する
+
+## 補足
+
+- 環境変数の型を定義する
+
+### 環境変数の型を定義する
+
+本件では少なくとも以下3件の環境変数を定義している。
+
+- `DATABASE_URL`
+- `JWT_ACCESS_SECRET`
+- `JWT_REFRESH_SECRET`
+
+これらはすべて`string`型として扱うことになるが、そのまま読み込むと型が定義されていない状態になる。  
+これらに型を定義するために以下モジュールを用いる。
+
+| Module | Usage |
+| --- | --- |
+| [@t3-oss/env-core](https://github.com/t3-oss/t3-env) | `createEnv`関数で型付けされた環境変数を返す。 |
+| [dotenv](https://github.com/motdotla/dotenv) | `config`関数で`.env`ファイルを読み込む。 |
+| [zod](https://github.com/colinhacks/zod) | スキーマ宣言・データ検証ライブラリ。ここでは環境変数のスキーマ宣言に用いる。 |
+
+
+具体的には以下のようにTypeScriptのコードを記述し、環境変数を参照する呼び出し元でimportして使用する。
+
+```typescript
+import { createEnv } from "@t3-oss/env-core";
+import { config } from "dotenv";
+import { z } from "zod";
+
+config();
+
+export const env = createEnv({
+  server: {
+    DATABASE_URL: z.string().url(),
+    JWT_ACCESS_SECRET: z.string(),
+    JWT_REFRESH_SECRET: z.string(),
+  },
+  runtimeEnv: process.env,
+});
+```
