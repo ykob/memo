@@ -36,7 +36,45 @@ JWTは、以下の3つの文字列をピリオドで区切った文字列で表�
 - 認証処理 `Auth` に関連するAPIルートを定義する
 - 認証処理のミドルウェアを作成する
 
-### schema.prismaに、ユーザー情報 `User` とリフレッシュトークン `RefreshToken` のモデルを追加する。
+### `schema.prisma`に、ユーザー情報 `User` とリフレッシュトークン `RefreshToken` のモデルを追加する。
+
+以下のようにモデルを定義する。
+
+```prisma
+model User {
+  id           String         @id @unique @default(uuid())
+  email        String         @unique
+  password     String
+  refreshToken RefreshToken[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+```
+
+#### `User`
+
+- `email`と`password`は登録とログインに用いる。
+- `refreshToken`を追加し、そのユーザーに対して発行されたリフレッシュトークンを紐づける。
+
+#### `RefreshToken`
+
+- `hashedToken`にリフレッシュトークンのハッシュ値を保存する。 
+- `userId`と`user`を追加し、リフレッシュトークンを発行した対象ユーザーを紐づける。
+- `revoked`によってトークンが無効化されたかどうかを判断する。
+
+#### 補足
+
+- アクセストークンは発行直後にCookieやLocalStorageに保存される想定で、データベースには保存しない。
 
 ### ユーザー情報 `User` に関連するサービスを定義する
 
