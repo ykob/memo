@@ -1,5 +1,9 @@
 # Express / Prisma を用いたJWT認証機能の実装
 
+## 検証用リポジトリ
+
+https://github.com/ykob/learn-nodejs-with-express
+
 ## JWTとは
 
 JWTとは、JSON Web Tokenの略で、JSON形式で情報をやり取りするための仕様のこと。  
