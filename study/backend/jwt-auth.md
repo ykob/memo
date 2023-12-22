@@ -83,7 +83,7 @@ model RefreshToken {
 ### ユーザー情報 `User` に関連するサービスを定義する
 
 - `findUsers` : ユーザー情報のリストを検索する
-- `findUserById` : Idをキーにして既存のユーザー情報を検索する
+- `findUserById` : ユーザーIdをキーにして既存のユーザー情報を検索する
 - `findUserByEmail` : Emailをキーにして既存のユーザー情報を検索する
 - `createUserByEmailAndPassword` : Emailとパスワードを入力してユーザー情報を新規作成する
 - `updateUser` : ユーザー情報を更新する
@@ -92,6 +92,13 @@ model RefreshToken {
 ### ユーザー情報 `User` に関連するAPIルートを定義する
 
 ### 認証処理 `Auth` に関連するサービスを定義する
+
+- `addRefreshTokenToWhitelist` : トークンID、ハッシュ値、ユーザーIDを元に、リフレッシュトークンを新規発行する
+- `findRefreshToken` : トークンIdをキーにして既存のリフレッシュトークンを検索する
+- `deleteRefreshToken` : トークンIdをキーにして既存のリフレッシュトークンを無効化する
+- `revokeTokens` : ユーザーIDをキーにして、該当するリフレッシュトークンを無効化する
+
+ログアウトの処理はクライアントサイドでアクセストークンを保存したCookieまたはLocalStorageを消去すればよいので、サービス側では考慮をしない。
 
 ### 認証処理 `Auth` に関連するAPIルートを定義する
 
