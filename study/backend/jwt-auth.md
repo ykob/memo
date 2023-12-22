@@ -82,6 +82,13 @@ model RefreshToken {
 
 ### ユーザー情報 `User` に関連するサービスを定義する
 
+- `findUsers` : ユーザー情報のリストを検索する
+- `findUserById` : Idをキーにして既存のユーザー情報を検索する
+- `findUserByEmail` : Emailをキーにして既存のユーザー情報を検索する
+- `createUserByEmailAndPassword` : Emailとパスワードを入力してユーザー情報を新規作成する
+- `updateUser` : ユーザー情報を更新する
+- `deleteUser` : ユーザー情報を削除する
+
 ### ユーザー情報 `User` に関連するAPIルートを定義する
 
 ### 認証処理 `Auth` に関連するサービスを定義する
