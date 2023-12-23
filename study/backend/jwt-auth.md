@@ -91,6 +91,25 @@ model RefreshToken {
 
 ### ユーザー情報 `User` に関連するAPIルートを定義する
 
+Expressでは`express.Router()`を用いてルーティングを定義することができる。  
+これによってAPIのエンドポイントをグループ化することができる。
+
+```typescript
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+```
+
+ユーザー情報に関するAPIルートは以下のように定義する。
+
+- GET `/users` : ユーザー情報のリストを検索する
+- GET `/users/:id` : ユーザーIdをキーにして既存のユーザー情報を検索する
+- POST `/users` : Emailとパスワードを入力してユーザー情報を新規作成する
+- PUT `/users/:id` : ユーザー情報を更新する
+- DELETE `/users/:id` : ユーザー情報を削除する
+
 ### 認証処理 `Auth` に関連するサービスを定義する
 
 - `addRefreshTokenToWhitelist` : トークンID、ハッシュ値、ユーザーIDを元に、リフレッシュトークンを新規発行する
@@ -101,6 +120,13 @@ model RefreshToken {
 ログアウトの処理はクライアントサイドでアクセストークンを保存したCookieまたはLocalStorageを消去すればよいので、サービス側では考慮をしない。
 
 ### 認証処理 `Auth` に関連するAPIルートを定義する
+
+認証処理に関するAPIルートは以下のように定義する。
+
+- POST `/auth/register` : Emailとパスワードを入力してユーザー情報を新規作成する
+- POST `/auth/login` : Emailとパスワードを入力してログインする
+- POST `/auth/refreshtoken` : リフレッシュトークンを入力してその有効性を確認し、問題なければリフレッシュトークンとアクセストークンを新規に生成する
+- POST `/auth/revoke-refresh-token` : リフレッシュトークンを無効化する
 
 ### 認証処理のミドルウェアを作成する
 
