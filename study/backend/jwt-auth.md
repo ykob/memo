@@ -177,6 +177,59 @@ router.get("/", (req, res) => {
 
 ### 認証処理のミドルウェアを作成する
 
+Expressのミドルウェアは、`req`、`res`、`next`の3つの引数を受け取る関数であり、  
+リクエストレスポンスサイクルの途中で共通の処理を実行したい場合に用いることができる。
+
+```typescript
+const middleware = (req, res, next) => {
+  // do something
+  next();
+};
+```
+
+今回の認証機能では、アクセストークンの有効性を検証するためのミドルウェア`isAuthenticated`を作成する。  
+`isAuthenticated`では主に以下の処理を行う。
+
+1. リクエストヘッダーからアクセストークン`authorization`を取得する。
+2. アクセストークンが存在しない場合は401エラーを返す。
+3. `jsonwebtoken.verify()`を用いてアクセストークンの有効性を検証する。有効でない場合は401エラーを返す。
+4. 有効な場合は`next()`を実行して、プロセスの次の処理に進む。
+
+ソースコードでは以下のように記述する。
+
+```typescript
+import { NextFunction, Request, Response } from "express";
+import { TokenExpiredError, verify } from "jsonwebtoken";
+import { env } from "./env";
+
+export const isAuthenticated = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    res.status(401);
+    throw new Error("🚫 Un-Authorized 🚫");
+  }
+
+  try {
+    const token = authorization.split(" ")[1];
+
+    verify(token, env.JWT_ACCESS_SECRET);
+  } catch (err) {
+    res.status(401);
+    if (err instanceof TokenExpiredError) {
+      throw new Error(err.name);
+    }
+    throw new Error("🚫 Un-Authorized 🚫");
+  }
+
+  return next();
+};
+```
+
 ## 補足
 
 - 環境変数の型を定義する
