@@ -37,7 +37,7 @@ React 16.8 の正式版がリリースされたのは 2019 年 2 月 4 日。
 `react-hooks/exhaustive-deps` の警告は `eslint-plugin-react-hooks` に依るもので Create React App の標準設定になっている。
 この設定を無視するような定義を eslintrc に上書きして定義すれば回避可能だが、影響範囲が `useEffect` 以外に及ぶ恐れもあるため、以下のコードのように一時的にルールを回避するような指定をしたほうが無難。
 
-```
+```typescript
 useEffect(() => {
   setCount(count + 1)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +52,7 @@ useEffect(() => {
 `useReducer` は実行時、第一引数に Reducer 関数、第二引数に初期の状態、第三引数に初期化関数を受け取る。  
 `useReducer` はまた `state` と `dispatch` を返す。`state` は現在の状態を表し、`dispatch` は Reducer 関数を呼び出すための関数である。
 
-```
+```typescript
 const initialState = { count: 0 };
 
 const reducer = (state, action) => {
@@ -87,7 +87,7 @@ const [state, dispatch] = useReducer(reducer, initialState, init);
 `useMemo` はレンダリング内で計算された値を記憶できるようにする。  
 小さなキャッシュなようなものであるとも言える。
 
-```
+```typescript
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
@@ -97,7 +97,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 子コンポーネントのイベントハンドラに関数を渡す場合、依存関係のある `state` がなくとも親が再レンダリングされると子も再レンダリングされてしまう。  
 `useCallback` で関数を包含することで関数をメモ化し、依存している値に変更がない場合に子の再レンダリングを防ぐ事ができる。
 
-```
+```typescript
 const memoizedCallback = React.useCallback(
   () => {
     doSomething(a, b);
@@ -112,7 +112,7 @@ React では基本的に親コンポーネントが再レンダリングされ�
 親コンポーネントの `state` が更新されると、それに関係しない子コンポーネントも再レンダリングされてしまうということになる。  
  `React.memo` で包含されたコンポーネントは、そのような無関係な更新による再レンダリングから保護される。
 
-```
+```tsx
 export const ChildComponent: React.FC<Props> = memo((props) => {
  // content
 })
@@ -125,7 +125,7 @@ export const ChildComponent: React.FC<Props> = memo((props) => {
 
 これを避けるには、 `React.memo` でコンポーネントを包含するやり方ではなく、配列を `useMemo` を介して生成されるようにすればよい。
 
-```
+```typescript
 const [num, setNum] = React.useState(0);
 
 const numArray = React.useMemo(() => {
@@ -140,7 +140,7 @@ Vue.js における `slot` に近い。
 
 `props` には標準で `children` というキーが含まれていて、これによって任意の子要素を出力する。
 
-```
+```tsx
 function ComponentA(props) {
   return (
     <div>{ props.children }</div>
@@ -174,7 +174,7 @@ React Hooks においては `useContext` という標準のフックが用意さ
 `createPortal` によって、コンポーネントのツリー構造に関わらず指定したノードに JSX をレンダリングすることができる。  
 `z-index` の制約から脱却しやすいため、モーダル、ダイアログ、ツールチップ、ドロップダウンメニューなどに用いられることが多い。
 
-```
+```tsx
 <div>
   <SomeComponent />
   {createPortal(children, domNode, key?)}
