@@ -181,6 +181,31 @@ React Hooks においては `useContext` という標準のフックが用意さ
 </div>
 ```
 
+## 非難ハッチ
+
+> コンポーネントによっては、React外のシステムに対して制御や同期を必要とする場合があります。例えば、ブラウザAPIを使用して入力フィールドにフォーカスを当てる、Reactを使用せずに実装されたビデオプレーヤの再生や一時停止を行う、あるいはリモートサーバに接続してメッセージをリッスンする、といったものです。
+
+https://ja.react.dev/learn/escape-hatches
+
+### `ref`
+
+コンポーネントに情報を記憶させたいが、情報の更新時に再レンダリングを実行させないようにしたい場合に使う。  
+数値や文字列など単純な値を保持させることもできるし、DOMのAPIを利用したい場合にDOM要素を保持しておくこともできる。
+
+`ref`にDOM要素を格納したい場合は、以下のようにしてJSXの要素の`ref`属性に`useRef()`の値を渡す。
+
+```tsx
+function Component() {
+  const ref = useRef(null);
+  return <div ref={ref}>コンポーネント</div>
+}
+```
+
+`ref`は他のコンポーネントのDOMノードにはアクセスできない。  
+特定のコンポーネントが内部のDOMノードをアクセス可能にしたい場合は`forwardRef`を使う必要がある。
+
+https://ja.react.dev/reference/react/forwardRef
+
 ## 参考リンク
 
 - [フックの導入 - React](https://ja.reactjs.org/docs/hooks-intro.html)
