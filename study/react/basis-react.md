@@ -44,6 +44,22 @@ useEffect(() => {
 }, [props.count])
 ```
 
+### `useEffect`の第一引数に渡す関数の返却値
+
+`useEffect`の第一引数に渡す関数から`return`する関数はクリーンアップ関数となる。  
+コンポーネントがページから削除（アンマウント）されると、最後に返却したクリーンアップ関数が実行される。  
+以下のようにコンポーネントがDOMイベントを用いる場合などに使用するとよい。
+
+```typescript
+useEffect(() => {
+  const listener = () => {};
+  window.addEventListener("resize", listener);
+  return () => {
+    window.removeEventListener("resize", listener);
+  }
+}, [])
+```
+
 ## `useState` と `useReducer`
 
 `useState` は単純な状態管理に用いるフックであるのに対し、`useReducer` はより複雑な状態管理に適したフックである。  
