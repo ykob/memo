@@ -14,4 +14,9 @@
 | `git branch <ブランチ名>` | ブランチの作成 |
 | `git checkout <ブランチ名>` | ブランチの切り替え |
 | `git checkout <ブランチ名> -b` | ブランチの作成と切り替え |
+| `git push origin <ブランチ名>` | リモートリポジトリにプッシュ |
+| `git pull origin <ブランチ名>` | リモートリポジトリからプル |
 | `git merge <ブランチ名>` | ブランチのマージ |
+| `git merge origin/<ブランチ名>` | リモートブランチのマージ |
+| `git branch -d <ブランチ名>` | ブランチの削除 |
+| `git branch \| xargs git branch -D` | ブランチの一括削除 |
