@@ -12,6 +12,7 @@
 | `git log --graph` | コミットログをグラフ表示 |
 | `git branch` | ブランチの一覧表示 |
 | `git branch <ブランチ名>` | ブランチの作成 |
+| `git checkout .` | ローカルの変更を破棄する |
 | `git checkout <ブランチ名>` | ブランチの切り替え |
 | `git checkout <ブランチ名> -b` | ブランチの作成と切り替え |
 | `git push origin <ブランチ名>` | リモートリポジトリにプッシュ |
