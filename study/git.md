@@ -25,4 +25,5 @@
 | `git merge origin/<ブランチ名>` | リモートブランチのマージ |
 | `git stash` | ローカルの変更を一時的に避難させる |
 | `git stash pop` | 一時的に避難させたローカルの変更をもとに戻す |
-
+| `git rebase <ブランチ名>` | 対象のブランチにリベースする |
+| `git rebase --continue` | リベースを再開する |
