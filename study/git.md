@@ -20,6 +20,7 @@
 | `git switch <ブランチ名>` | ブランチの切り替え |
 | `git switch <ブランチ名> -c` | ブランチの作成と切り替え |
 | `git push origin <ブランチ名>` | リモートリポジトリにプッシュ |
+| `git push -f` | 強制プッシュ（履歴の強制上書き） |
 | `git pull origin <ブランチ名>` | リモートリポジトリからプル |
 | `git merge <ブランチ名>` | ブランチのマージ |
 | `git merge origin/<ブランチ名>` | リモートブランチのマージ |
@@ -27,3 +28,4 @@
 | `git stash pop` | 一時的に避難させたローカルの変更をもとに戻す |
 | `git rebase <ブランチ名>` | 対象のブランチにリベースする |
 | `git rebase --continue` | リベースを再開する |
+| `git reset <コミットID> --hard` | 特定のコミットIDに位置を揃える |
